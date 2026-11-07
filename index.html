@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="uk" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Фітнес-кемп «Онови своє тіло»: інтерактивний калькулятор ІМТ і BMR, адаптивні програми тренувань, відео та відгуки учасників на Tailwind CSS." />
+    <title>Онови своє тіло — фітнес-кемп | Лабораторна робота №7</title>
+    <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
+ 
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
+ 
+    <!-- FontAwesome 6 CDN для іконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+ 
+    <!-- Tailwind CSS (CDN згідно з методичкою; для продакшену — Tailwind CLI/PostCSS) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+ 
+    <!-- Налаштування дизайн-системи в Tailwind -->
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                primary: '#D4A72C', 'primary-hover': '#E6BC48', 'primary-pressed': '#B88F1F',
+                secondary: '#2E2E33', accent: '#F2D675', dark: '#0F0F10',
+                surface: '#1A1A1C', 'surface-alt': '#232326', border: '#6B6B72',
+                muted: '#A8A8AD', focus: '#8AB4FF', success: '#4ADE80',
+              },
+            },
+            fontFamily: {
+              heading: ['Montserrat', 'system-ui', 'sans-serif'],
+              body: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            boxShadow: {
+              card: '0 6px 16px rgba(0, 0, 0, 0.45)',
+              'card-hover': '0 16px 40px rgba(212, 167, 44, 0.16)',
+            },
+          },
+        },
+      };
+    </script>
+ 
+    <!-- Файл специфічних користувацьких стилів (skip-link, faq-icon) -->
+    <link rel="stylesheet" href="custom-styles.css" />
+  </head>
+  <body class="bg-brand-dark text-[#F5F5F2] font-body min-h-screen flex flex-col antialiased selection:bg-brand-primary selection:text-brand-dark">
+    <a class="skip-link" href="#main">Перейти до основного вмісту</a>
+ 
+    <!-- ===== HEADER: десктопне меню з xl (1280px), нижче — гамбургер ===== -->
+    <header class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border/40 transition-colors" id="top">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        <a class="flex items-center gap-3 group rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#top">
+          <img src="assets/images/logo.svg" alt="Логотип «Онови своє тіло»" width="40" height="40" class="h-10 w-10 transition-transform duration-300 group-hover:scale-105" />
+          <span class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-brand-primary transition-colors">Онови своє тіло</span>
+        </a>
+ 
+        <nav class="hidden xl:flex items-center" aria-label="Головна навігація">
+          <ul class="flex items-center gap-6 xl:gap-8 m-0 p-0 list-none text-sm font-medium">
+            <li><a href="#programs" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Програми</a></li>
+            <li><a href="#how-it-works" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Як це працює</a></li>
+            <li><a href="#calculator" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Калькулятор</a></li>
+            <li><a href="#video" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Відео</a></li>
+            <li><a href="#reviews" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Відгуки</a></li>
+            <li><a href="#faq" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">FAQ</a></li>
+            <li><a href="#contacts" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Контакти</a></li>
+          </ul>
+        </nav>
+ 
+        <div class="flex items-center gap-3">
+          <a class="hidden sm:inline-flex items-center justify-center min-h-[44px] px-5 lg:px-6 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 text-sm tracking-wide shadow-md hover:shadow-lg hover:shadow-brand-primary/20 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#calculator">Розрахувати програму</a>
+          <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Відкрити головне меню"
+            class="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-brand-border/40 text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+            <i class="fa-solid fa-bars text-lg" id="burger-icon" aria-hidden="true"></i>
+            <i class="fa-solid fa-xmark text-lg hidden" id="close-icon" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+ 
+      <nav id="mobile-menu" class="hidden xl:hidden border-t border-brand-border/30 bg-brand-surface/95 backdrop-blur-md px-4 pt-3 pb-6 shadow-2xl" aria-label="Мобільна навігація">
+        <ul class="space-y-1 list-none p-0 m-0 text-base font-medium">
+          <li>
+            <a href="#programs" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Програми</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#how-it-works" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Як це працює</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#calculator" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Калькулятор</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#video" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Відео</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#reviews" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Відгуки</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#faq" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Часті питання</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#contacts" class="mobile-nav-link flex items-center justify-between px-3 py-3 rounded-lg text-brand-muted hover:text-white hover:bg-brand-surface-alt transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+              <span>Контакти</span>
+              <i class="fa-solid fa-angle-right text-xs opacity-60" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="pt-4 mt-2 border-t border-brand-border/20">
+          <a class="mobile-nav-link w-full flex items-center justify-center min-h-[44px] px-6 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 text-center shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#calculator">Розрахувати програму</a>
+        </div>
+      </nav>
+    </header>
+ 
+    <main id="main" class="flex-grow">
+      <!-- 1. HERO -->
+      <section class="relative py-12 sm:py-16 lg:py-20 bg-brand-surface border-b border-brand-border/30 overflow-hidden" aria-labelledby="hero-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-left">
+              <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-primary/10 text-brand-primary border border-brand-primary/30">
+                <i class="fa-solid fa-bolt text-[11px]" aria-hidden="true"></i>
+                Фітнес-кемп для нових звичок
+              </span>
+              <h1 id="hero-title" class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15]">
+                Онови своє тіло <br class="hidden sm:inline" />
+                <span class="text-brand-primary">у власному темпі</span>
+              </h1>
+              <p class="text-base sm:text-lg md:text-xl text-brand-muted leading-relaxed max-w-2xl">
+                Оціни свої показники та обери напрям тренувань, який відповідає твоїм цілям. Професійний супровід, науковий розрахунок та підтримка спільноти.
+              </p>
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <a class="inline-flex items-center justify-center min-h-[44px] px-8 py-3.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 text-base shadow-lg hover:shadow-brand-primary/25 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#calculator">
+                  <span>Розрахувати програму</span>
+                  <i class="fa-solid fa-arrow-right ml-2 text-sm" aria-hidden="true"></i>
+                </a>
+                <a class="inline-flex items-center justify-center min-h-[44px] px-7 py-3.5 rounded-lg border border-brand-primary/50 hover:border-brand-primary text-white hover:text-brand-primary bg-brand-surface-alt/40 hover:bg-brand-surface-alt font-semibold text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#programs">Переглянути програми</a>
+              </div>
+              <div class="grid grid-cols-3 gap-4 pt-6 border-t border-brand-border/30 max-w-lg">
+                <div><div class="font-heading font-bold text-2xl lg:text-3xl text-brand-primary">500+</div><div class="text-xs text-brand-muted mt-0.5">Учасників кемпу</div></div>
+                <div><div class="font-heading font-bold text-2xl lg:text-3xl text-white">98%</div><div class="text-xs text-brand-muted mt-0.5">Досягли мети</div></div>
+                <div><div class="font-heading font-bold text-2xl lg:text-3xl text-white">100%</div><div class="text-xs text-brand-muted mt-0.5">Науковий підхід</div></div>
+              </div>
+            </div>
+            <div class="lg:col-span-5">
+              <div class="relative group">
+                <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-brand-primary/30 to-brand-accent/20 blur-xl opacity-50 group-hover:opacity-80 transition duration-500" aria-hidden="true"></div>
+                <img src="assets/images/hero.webp" alt="Чоловік виконує станову тягу зі штангою у тренажерному залі" width="1920" height="1080" loading="eager" fetchpriority="high"
+                  class="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] object-cover rounded-2xl border border-brand-border/50 shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- 2. КАЛЬКУЛЯТОР ІМТ / BMR -->
+      <section id="calculator" class="py-16 sm:py-20 bg-brand-dark relative scroll-mt-20" aria-labelledby="calculator-title">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Почни з себе</span>
+            <h2 id="calculator-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Калькулятор програми</h2>
+            <p class="text-brand-muted mt-3 text-base">Вкажи основні дані для миттєвого індивідуального розрахунку індексу маси тіла (ІМТ) та базового обміну речовин (BMR).</p>
+          </div>
+ 
+          <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
+            <form id="bmi-form" novalidate>
+              <fieldset class="space-y-6">
+                <legend class="text-lg font-heading font-bold text-brand-primary pb-3 border-b border-brand-border/30 w-full flex items-center gap-2">
+                  <i class="fa-solid fa-calculator" aria-hidden="true"></i>
+                  <span>Параметри для розрахунку</span>
+                </legend>
+ 
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
+                  <div class="space-y-2">
+                    <label for="sex" class="block text-sm font-semibold text-white">Стать</label>
+                    <select id="sex" name="sex" class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors">
+                      <option value="male">Чоловіча</option>
+                      <option value="female">Жіноча</option>
+                    </select>
+                  </div>
+                  <div class="space-y-2">
+                    <label for="weight" class="block text-sm font-semibold text-white">Вага, кг <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                    <input id="weight" name="weight" type="number" min="30" max="250" step="0.5" placeholder="Наприклад, 75" required
+                      class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white placeholder-brand-muted/80 focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors" />
+                  </div>
+                  <div class="space-y-2">
+                    <label for="height" class="block text-sm font-semibold text-white">Зріст, см <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                    <input id="height" name="height" type="number" min="100" max="230" step="1" placeholder="Наприклад, 178" required
+                      class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white placeholder-brand-muted/80 focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors" />
+                  </div>
+                  <div class="space-y-2">
+                    <label for="age" class="block text-sm font-semibold text-white">Вік, років <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                    <input id="age" name="age" type="number" min="14" max="100" step="1" placeholder="Наприклад, 28" required
+                      class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white placeholder-brand-muted/80 focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors" />
+                  </div>
+                  <div class="space-y-2 sm:col-span-2">
+                    <label for="activity" class="block text-sm font-semibold text-white">Рівень активності</label>
+                    <select id="activity" name="activity" class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors">
+                      <option value="1.2">Мінімальний (сидячий спосіб)</option>
+                      <option value="1.375" selected>Помірний (1-3 тренування на тиждень)</option>
+                      <option value="1.55">Середній (3-5 тренувань на тиждень)</option>
+                      <option value="1.725">Високий (6-7 тренувань на тиждень)</option>
+                    </select>
+                  </div>
+                </div>
+ 
+                <p id="form-error" role="alert" class="hidden text-sm font-semibold text-red-400 bg-red-400/10 border border-red-400/30 rounded-lg px-4 py-3"></p>
+ 
+                <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <button type="submit" class="w-full sm:w-auto min-h-[44px] px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 text-base shadow-md hover:shadow-lg flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                    <i class="fa-solid fa-play text-xs" aria-hidden="true"></i>
+                    <span>Розрахувати показники</span>
+                  </button>
+                  <span class="text-xs text-brand-muted"><span aria-hidden="true">*</span> Обов’язкові поля. Усі розрахунки відбуваються конфіденційно</span>
+                </div>
+              </fieldset>
+            </form>
+ 
+            <!-- Результати (озвучуються скрінрідером через aria-live) -->
+            <div id="result-box" aria-live="polite" class="mt-8 p-5 sm:p-6 rounded-xl bg-brand-surface-alt border-l-4 border-brand-primary transition-all duration-300">
+              <h3 class="font-heading font-bold text-lg text-white mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-square-poll-vertical text-brand-primary" aria-hidden="true"></i>
+                <span id="result-title">Тут з’являться твої результати</span>
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3 text-sm">
+                <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30">
+                  <span class="text-brand-muted block text-xs">Індекс маси тіла (ІМТ):</span>
+                  <span id="bmi-value" class="text-xl font-bold font-heading text-white">—</span>
+                  <span id="bmi-status" class="text-xs text-brand-muted block mt-0.5">Вкажіть дані у формі</span>
+                </div>
+                <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30">
+                  <span class="text-brand-muted block text-xs">Базовий метаболізм (BMR):</span>
+                  <span id="bmr-value" class="text-xl font-bold font-heading text-white">—</span>
+                  <span id="bmr-status" class="text-xs text-brand-muted block mt-0.5">ккал/добу</span>
+                </div>
+              </div>
+              <div id="recommendation-box" class="mt-4 p-3 rounded-lg bg-brand-primary/10 border border-brand-primary/30 text-xs text-white hidden">
+                <strong class="text-brand-primary font-semibold">Рекомендований напрям: </strong>
+                <span id="recommendation-text"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- 3. ЯК ЦЕ ПРАЦЮЄ -->
+      <section id="how-it-works" class="py-16 sm:py-20 bg-brand-surface border-b border-brand-border/30 scroll-mt-20" aria-labelledby="how-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Три прості кроки</span>
+            <h2 id="how-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Як це працює</h2>
+            <p class="text-brand-muted mt-3 text-base">Шлях до нового здорового тіла починається зі зрозумілого алгоритму та чіткої послідовності дій.</p>
+          </div>
+          <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 list-none p-0 m-0">
+            <!-- Крок 01 -->
+            <li class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card group">
+              <div>
+                <div class="w-14 h-14 rounded-xl bg-brand-surface border border-brand-border/50 flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                </div>
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Крок 01</span>
+                <h3 class="font-heading font-bold text-xl text-white mb-3">Вкажи параметри</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">Заповни поля онлайн-калькулятора (вага, зріст, вік, активність), щоб визначити вихідну точку та потреби тіла.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-brand-border/20 text-xs text-brand-muted flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-success" aria-hidden="true"></i>
+                <span>Займає менше 1 хвилини</span>
+              </div>
+            </li>
+            <!-- Крок 02 -->
+            <li class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card group">
+              <div>
+                <div class="w-14 h-14 rounded-xl bg-brand-surface border border-brand-border/50 flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-compass" aria-hidden="true"></i>
+                </div>
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Крок 02</span>
+                <h3 class="font-heading font-bold text-xl text-white mb-3">Обери свій напрям</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">Знайди програму, адаптовану під твою конкретну мету: схуднення, набір сухої м’язової маси або тонус.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-brand-border/20 text-xs text-brand-muted flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-success" aria-hidden="true"></i>
+                <span>3 адаптивні рівні складності</span>
+              </div>
+            </li>
+            <!-- Крок 03 -->
+            <li class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card group">
+              <div>
+                <div class="w-14 h-14 rounded-xl bg-brand-surface border border-brand-border/50 flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-dumbbell" aria-hidden="true"></i>
+                </div>
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-brand-primary mb-2">Крок 03</span>
+                <h3 class="font-heading font-bold text-xl text-white mb-3">Почни тренуватися</h3>
+                <p class="text-brand-muted text-sm leading-relaxed">Рухайся послідовно під наглядом наставників, отримуй щотижневий зворотний зв’язок та відстежуй власний прогрес.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-brand-border/20 text-xs text-brand-muted flex items-center gap-2">
+                <i class="fa-solid fa-check text-brand-success" aria-hidden="true"></i>
+                <span>Регулярна фіксація результату</span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+ 
+      <!-- ============================================================= -->
+      <!-- МЕДІА-ІНТЕГРАЦІЯ 1: YouTube-відео (адаптивний контейнер 16:9)    -->
+      <!-- Замініть VIDEO_ID на ID свого відео з YouTube (Поділитися → Вбудувати) -->
+      <!-- ============================================================= -->
+      <section id="video" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="video-title">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Відео</span>
+            <h2 id="video-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Подивись, як тренуються в кемпі</h2>
+            <p class="text-brand-muted mt-3 text-base">Короткий огляд тренувань і техніки базових вправ.</p>
+          </div>
+          <figure class="m-0">
+            <div class="aspect-video w-full overflow-hidden rounded-2xl border border-brand-border/50 shadow-card bg-brand-surface">
+              <iframe class="h-full w-full" src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+                title="Огляд тренувань фітнес-кемпу «Онови своє тіло»" loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <figcaption class="mt-3 text-center text-xs text-brand-muted">Відео: YouTube</figcaption>
+          </figure>
+        </div>
+      </section>
+ 
+      <!-- 4. ПРОГРАМИ -->
+      <section id="programs" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="programs-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Обери свій фокус</span>
+            <h2 id="programs-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Напрями тренувальних програм</h2>
+            <p class="text-brand-muted mt-3 text-base">Кожна програма створена сертифікованими тренерами та нутриціологами для безпечного і стабільного результату.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <!-- Картка: Зниження ваги -->
+            <article class="bg-brand-surface border border-brand-border/40 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-primary/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover group">
+              <div>
+                <div class="relative h-48 w-full overflow-hidden bg-brand-surface-alt">
+                  <img src="assets/images/card_weight_loss.jpg" alt="Тренування для схуднення та кардіо" width="800" height="600" loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-dark/80 backdrop-blur border text-brand-primary border-brand-primary/40">Найпопулярніша</span>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-brand-primary transition-colors">Зниження ваги</h3>
+                  <p class="text-brand-muted text-sm mb-4 leading-relaxed">Збалансовані кардіо та функціональні навантаження у поєднанні з м'яким дефіцитом калорій без стресу для організму.</p>
+                  <ul class="space-y-2 text-xs text-brand-muted border-t border-brand-border/30 pt-4 list-none p-0">
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>4 тренування на тиждень (HIIT + Cardio)</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Індивідуальний план харчування</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Щотижневі заміри та корекція навантаження</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="p-6 pt-0">
+                <a href="#calculator" aria-label="Дізнатися більше про програму Зниження ваги"
+                  class="w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-dark font-bold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                  <span>Дізнатися більше</span>
+                  <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+            <!-- Картка: Набір м’язів -->
+            <article class="bg-brand-surface border border-brand-border/40 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-primary/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover group">
+              <div>
+                <div class="relative h-48 w-full overflow-hidden bg-brand-surface-alt">
+                  <img src="assets/images/card_muscle_gain.jpg" alt="Силове тренування зі штангою для набору маси" width="800" height="600" loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-dark/80 backdrop-blur border text-brand-accent border-brand-accent/40">Силовий фокус</span>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-brand-primary transition-colors">Набір м’язів</h3>
+                  <p class="text-brand-muted text-sm mb-4 leading-relaxed">Прогресивні силові тренування з вільними вагами для розвитку максимальної сили та гіпертрофії м'язових волокон.</p>
+                  <ul class="space-y-2 text-xs text-brand-muted border-t border-brand-border/30 pt-4 list-none p-0">
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Спліт-програма з контролем прогресії ваг</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Розрахунок профіциту калорій та білка</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Аналіз техніки базових вправ на відео</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="p-6 pt-0">
+                <a href="#calculator" aria-label="Дізнатися більше про програму Набір м’язів"
+                  class="w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-dark font-bold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                  <span>Дізнатися більше</span>
+                  <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+            <!-- Картка: Підтримка форми -->
+            <article class="bg-brand-surface border border-brand-border/40 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-primary/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover group sm:col-span-2 lg:col-span-1">
+              <div>
+                <div class="relative h-48 w-full overflow-hidden bg-brand-surface-alt">
+                  <img src="assets/images/card_fitness_tone.jpg" alt="Функціональний тренінг та розтяжка" width="800" height="600" loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-dark/80 backdrop-blur border text-emerald-400 border-emerald-400/40">Баланс і тонус</span>
+                </div>
+                <div class="p-6">
+                  <h3 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-brand-primary transition-colors">Підтримка форми</h3>
+                  <p class="text-brand-muted text-sm mb-4 leading-relaxed">Збалансований рух для активного способу життя, покращення витривалості, мобільності суглобів та енергії на кожен день.</p>
+                  <ul class="space-y-2 text-xs text-brand-muted border-t border-brand-border/30 pt-4 list-none p-0">
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>3 комплексних тренування (Mobility + Tone)</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Рекомендації здорового щоденного раціону</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
+                      <span>Практики відновлення та якісного сну</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="p-6 pt-0">
+                <a href="#calculator" aria-label="Дізнатися більше про програму Підтримка форми"
+                  class="w-full min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-brand-dark font-bold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                  <span>Дізнатися більше</span>
+                  <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- 5. ВІДГУКИ -->
+      <section id="reviews" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="reviews-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Досвід учасників</span>
+            <h2 id="reviews-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Що говорять випускники кемпу</h2>
+            <p class="text-brand-muted mt-3 text-base">Реальні історії людей, які налагодили звички та змінили якість свого життя.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <div class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:border-brand-primary/50 transition-colors">
+              <figure class="m-0 flex flex-col justify-between h-full space-y-6">
+                <div>
+                  <div class="flex items-center gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                  </div>
+                  <blockquote class="m-0 text-white font-medium text-lg sm:text-xl leading-relaxed italic">«Знайшла комфортний ритм і стала регулярніше тренуватися без докорів сумління. За 2 місяці мінус 6 кг і море енергії!»</blockquote>
+                </div>
+                <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                  <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ОЛ</div>
+                  <div>
+                    <div class="font-bold text-sm text-white">Олена Ковальчук</div>
+                    <div class="text-xs text-brand-muted">Учасниця програми «Зниження ваги»</div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:border-brand-primary/50 transition-colors">
+              <figure class="m-0 flex flex-col justify-between h-full space-y-6">
+                <div>
+                  <div class="flex items-center gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                    <i class="fa-solid fa-star" aria-hidden="true"></i>
+                  </div>
+                  <blockquote class="m-0 text-white font-medium text-lg sm:text-xl leading-relaxed italic">«Зрозумілий план тренувань та чіткі цифри BMR допомогли мені нарешті впевнено почати та наростити 4 кг чистих м'язів.»</blockquote>
+                </div>
+                <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                  <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">АН</div>
+                  <div>
+                    <div class="font-bold text-sm text-white">Андрій Шевченко</div>
+                    <div class="text-xs text-brand-muted">Учасник програми «Набір м’язів»</div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- 6. FAQ -->
+      <section id="faq" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="faq-title">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Відповіді на запитання</span>
+            <h2 id="faq-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Часті питання</h2>
+            <p class="text-brand-muted mt-3 text-base">Все, що потрібно знати перед стартом участі у фітнес-кемпі.</p>
+          </div>
+          <div class="space-y-4">
+            <details class="group bg-brand-surface border border-brand-border/40 rounded-xl overflow-hidden transition-all duration-200">
+              <summary class="flex items-center justify-between p-5 sm:p-6 font-heading font-semibold text-base sm:text-lg text-white cursor-pointer select-none hover:text-brand-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <span>Що показують показники ІМТ та BMR?</span>
+                <i class="faq-icon fa-solid fa-chevron-down text-sm text-brand-muted transition-transform duration-300 ml-4" aria-hidden="true"></i>
+              </summary>
+              <div class="px-5 sm:px-6 pb-6 pt-1 text-sm text-brand-muted leading-relaxed border-t border-brand-border/20">ІМТ (індекс маси тіла) оцінює відповідність ваги та зросту людини, а BMR (базальний рівень метаболізму) показує кількість калорій, яку ваш організм спалює у стані спокою для підтримки дихання, кровообігу та роботи органів.</div>
+            </details>
+            <details class="group bg-brand-surface border border-brand-border/40 rounded-xl overflow-hidden transition-all duration-200">
+              <summary class="flex items-center justify-between p-5 sm:p-6 font-heading font-semibold text-base sm:text-lg text-white cursor-pointer select-none hover:text-brand-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <span>Чи потрібен попередній досвід тренувань?</span>
+                <i class="faq-icon fa-solid fa-chevron-down text-sm text-brand-muted transition-transform duration-300 ml-4" aria-hidden="true"></i>
+              </summary>
+              <div class="px-5 sm:px-6 pb-6 pt-1 text-sm text-brand-muted leading-relaxed border-t border-brand-border/20">Ні, попередній досвід не є обов'язковим. Кожна програма має адаптивні варіанти вправ як для абсолютних новачків, так і для досвідчених спортсменів. Тренер індивідуально коригує навантаження.</div>
+            </details>
+            <details class="group bg-brand-surface border border-brand-border/40 rounded-xl overflow-hidden transition-all duration-200">
+              <summary class="flex items-center justify-between p-5 sm:p-6 font-heading font-semibold text-base sm:text-lg text-white cursor-pointer select-none hover:text-brand-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <span>Чи замінює калькулятор консультацію фахівця?</span>
+                <i class="faq-icon fa-solid fa-chevron-down text-sm text-brand-muted transition-transform duration-300 ml-4" aria-hidden="true"></i>
+              </summary>
+              <div class="px-5 sm:px-6 pb-6 pt-1 text-sm text-brand-muted leading-relaxed border-t border-brand-border/20">Ні, результати калькулятора мають виключно ознайомчий та орієнтовний характер. Перед початком інтенсивних фізичних тренувань рекомендується проконсультуватися з лікарем, особливо за наявності хронічних захворювань.</div>
+            </details>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- ============================================================= -->
+      <!-- МЕДІА-ІНТЕГРАЦІЯ 2: Google Maps (контакти + карта)               -->
+      <!-- Щоб змінити місце: Google Maps → Поділитися → Вбудовування карти -->
+      <!-- ============================================================= -->
+      <section id="contacts" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="contacts-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Як нас знайти</span>
+            <h2 id="contacts-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Контакти та розташування</h2>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8 items-stretch">
+            <address class="not-italic lg:col-span-2 bg-brand-surface border border-brand-border/40 rounded-2xl p-6 sm:p-8 space-y-4 text-sm text-brand-muted">
+              <p class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-brand-primary mt-0.5" aria-hidden="true"></i><span>Україна, база кемпу в Карпатах (Яремче)</span></p>
+              <p class="flex items-center gap-3"><i class="fa-solid fa-clock text-brand-primary" aria-hidden="true"></i><span>Щодня з 08:00 до 20:00</span></p>
+              <p class="flex items-center gap-3"><i class="fa-solid fa-envelope text-brand-primary" aria-hidden="true"></i><a class="hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="mailto:info@onovytilo.example">info@onovytilo.example</a></p>
+              <p class="flex items-center gap-3"><i class="fa-solid fa-phone text-brand-primary" aria-hidden="true"></i><a class="hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="tel:+380000000000">+380 00 000 00 00</a></p>
+            </address>
+            <div class="lg:col-span-3 aspect-[4/3] sm:aspect-video lg:aspect-auto lg:min-h-[320px] overflow-hidden rounded-2xl border border-brand-border/50 shadow-card bg-brand-surface">
+              <iframe class="h-full w-full" src="https://www.google.com/maps?q=Yaremche,+Ukraine&amp;output=embed"
+                title="Карта розташування фітнес-кемпу «Онови своє тіло» в Яремчі" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+ 
+      <!-- 7. ФІНАЛЬНИЙ CTA -->
+      <section class="py-12 sm:py-16" aria-labelledby="final-cta-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-gradient-to-r from-brand-primary via-brand-accent to-brand-primary p-6 sm:p-12 lg:p-16 rounded-3xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 text-brand-dark">
+            <div class="space-y-2 text-center md:text-left">
+              <span class="inline-block text-xs font-extrabold uppercase tracking-widest opacity-80">Твій наступний крок</span>
+              <h2 id="final-cta-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-brand-dark leading-tight">Почни з простого розрахунку вже сьогодні</h2>
+              <p class="text-brand-dark/80 text-sm sm:text-base max-w-xl">Дізнайся точні параметри власного тіла та отримай покроковий план тренувань безкоштовно.</p>
+            </div>
+            <a class="inline-flex items-center justify-center min-h-[48px] px-8 py-3.5 rounded-xl bg-brand-dark hover:bg-brand-surface-alt active:bg-black text-brand-primary font-bold text-base transition-all duration-200 shadow-xl hover:shadow-2xl w-full md:w-auto text-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-dark focus-visible:ring-offset-2 focus-visible:ring-offset-brand-primary" href="#calculator">
+              <span>Розрахувати програму</span>
+              <i class="fa-solid fa-arrow-right ml-2 text-sm" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+ 
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-brand-surface border-t border-brand-border/40 pt-16 pb-12 mt-auto">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-12 border-b border-brand-border/30">
+          <div class="space-y-4">
+            <a class="flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#top">
+              <img src="assets/images/logo.svg" alt="Логотип «Онови своє тіло»" width="36" height="36" class="h-9 w-9" />
+              <span class="font-heading font-bold text-lg text-white">Онови своє тіло</span>
+            </a>
+            <p class="text-xs text-brand-muted leading-relaxed">Сучасний фітнес-кемп для формування сталих здорових звичок, усвідомленого тренінгу та гармонійного оновлення тіла.</p>
+            <div class="flex items-center gap-3 pt-2">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (відкриється в новій вкладці)" class="w-9 h-9 rounded-lg bg-brand-surface-alt border border-brand-border/40 text-brand-muted hover:text-brand-primary hover:border-brand-primary flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <i class="fa-brands fa-instagram text-sm" aria-hidden="true"></i>
+              </a>
+              <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram (відкриється в новій вкладці)" class="w-9 h-9 rounded-lg bg-brand-surface-alt border border-brand-border/40 text-brand-muted hover:text-brand-primary hover:border-brand-primary flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <i class="fa-brands fa-telegram text-sm" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube (відкриється в новій вкладці)" class="w-9 h-9 rounded-lg bg-brand-surface-alt border border-brand-border/40 text-brand-muted hover:text-brand-primary hover:border-brand-primary flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <i class="fa-brands fa-youtube text-sm" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (відкриється в новій вкладці)" class="w-9 h-9 rounded-lg bg-brand-surface-alt border border-brand-border/40 text-brand-muted hover:text-brand-primary hover:border-brand-primary flex items-center justify-center transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                <i class="fa-brands fa-facebook-f text-sm" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-sm text-white uppercase tracking-wider mb-4">Навігація</h3>
+            <ul class="space-y-2.5 list-none p-0 m-0 text-sm">
+              <li><a href="#top" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Головна</a></li>
+              <li><a href="#programs" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Програми тренувань</a></li>
+              <li><a href="#how-it-works" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Як це працює</a></li>
+              <li><a href="#calculator" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Калькулятор ІМТ / BMR</a></li>
+              <li><a href="#reviews" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Відгуки учасників</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-sm text-white uppercase tracking-wider mb-4">Напрями кемпу</h3>
+            <ul class="space-y-2.5 list-none p-0 m-0 text-sm">
+              <li><a href="#programs" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Зниження ваги (Fat Burn)</a></li>
+              <li><a href="#programs" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Набір м’язів (Hypertrophy)</a></li>
+              <li><a href="#programs" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Підтримка форми (Tone &amp; Mobility)</a></li>
+              <li><a href="#faq" class="text-brand-muted hover:text-brand-primary transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">База знань &amp; FAQ</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-heading font-bold text-sm text-white uppercase tracking-wider mb-4">Контакти</h3>
+            <ul class="space-y-3 list-none p-0 m-0 text-sm">
+              <li><a href="mailto:info@onovytilo.example" class="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-2.5 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"><i class="fa-solid fa-envelope text-brand-primary" aria-hidden="true"></i><span>info@onovytilo.example</span></a></li>
+              <li><a href="tel:+380000000000" class="text-brand-muted hover:text-brand-primary transition-colors flex items-center gap-2.5 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"><i class="fa-solid fa-phone text-brand-primary" aria-hidden="true"></i><span>+380 00 000 00 00</span></a></li>
+              <li><a href="#contacts" class="text-brand-muted hover:text-brand-primary transition-colors flex items-start gap-2.5 text-xs rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark"><i class="fa-solid fa-location-dot text-brand-primary mt-0.5" aria-hidden="true"></i><span>Україна, база кемпу в Карпатах</span></a></li>
+              <li class="text-brand-muted flex items-center gap-2.5 text-xs"><i class="fa-solid fa-clock text-brand-primary" aria-hidden="true"></i><span>Щодня з 08:00 до 20:00</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 text-xs text-brand-muted text-center sm:text-left">
+          <p class="m-0">© 2026 Фітнес-кемп «Онови своє тіло». Усі права захищено.</p>
+        </div>
+      </div>
+    </footer>
+ 
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // 1. Мобільне меню (гамбургер)
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const burgerIcon = document.getElementById('burger-icon');
+        const closeIcon = document.getElementById('close-icon');
+ 
+        function setMenu(open) {
+          mobileMenu.classList.toggle('hidden', !open);
+          burgerIcon.classList.toggle('hidden', open);
+          closeIcon.classList.toggle('hidden', !open);
+          mobileBtn.setAttribute('aria-expanded', String(open));
+          mobileBtn.setAttribute('aria-label', open ? 'Закрити головне меню' : 'Відкрити головне меню');
+        }
+ 
+        if (mobileBtn && mobileMenu) {
+          mobileBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+          document.querySelectorAll('.mobile-nav-link').forEach((link) =>
+            link.addEventListener('click', () => setMenu(false))
+          );
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+              setMenu(false);
+              mobileBtn.focus();
+            }
+          });
+        }
+ 
+        // 2. Калькулятор ІМТ та BMR (формула Міффліна-Сан Жеора)
+        const form = document.getElementById('bmi-form');
+        if (!form) return;
+        const $ = (id) => document.getElementById(id);
+        const errorBox = $('form-error');
+ 
+        function showError(msg) {
+          errorBox.textContent = msg;
+          errorBox.classList.remove('hidden');
+        }
+ 
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          errorBox.classList.add('hidden');
+ 
+          const sex = $('sex').value;
+          const weight = parseFloat($('weight').value);
+          const height = parseFloat($('height').value);
+          const age = parseInt($('age').value, 10);
+          const activity = parseFloat($('activity').value);
+ 
+          // Валідація: порожні значення та вихід за межі min/max
+          for (const [id, label, value] of [['weight', 'вага', weight], ['height', 'зріст', height], ['age', 'вік', age]]) {
+            const input = $(id);
+            if (Number.isNaN(value)) {
+              showError('Будь ласка, заповніть усі обов’язкові поля: ' + label + '.');
+              input.focus();
+              return;
+            }
+            if (value < parseFloat(input.min) || value > parseFloat(input.max)) {
+              showError('Поле «' + label + '» має бути в межах від ' + input.min + ' до ' + input.max + '.');
+              input.focus();
+              return;
+            }
+          }
+ 
+          const bmi = weight / Math.pow(height / 100, 2);
+          // BMR = 10*вага + 6.25*зріст - 5*вік + s  (s = +5 для чоловіків, -161 для жінок)
+          const baseBmr = 10 * weight + 6.25 * height - 5 * age + (sex === 'male' ? 5 : -161);
+          const totalDailyCalories = Math.round(baseBmr * activity);
+ 
+          let category, rec, colorClass;
+          if (bmi < 18.5) {
+            category = 'Недостатня вага'; colorClass = 'text-amber-400';
+            rec = '«Набір м’язів» — профіцит калорій та силові заняття для набору маси.';
+          } else if (bmi < 25) {
+            category = 'Нормальна вага'; colorClass = 'text-emerald-400';
+            rec = '«Підтримка форми» або «Набір м’язів» для розвитку функціональності та тонусу.';
+          } else if (bmi < 30) {
+            category = 'Надлишкова вага'; colorClass = 'text-brand-primary';
+            rec = '«Зниження ваги» — помірний дефіцит калорій та кардіо-функціональний комплекс.';
+          } else {
+            category = 'Ожиріння'; colorClass = 'text-red-400';
+            rec = '«Зниження ваги» під пильним наглядом наставника та нутриціолога.';
+          }
+ 
+          $('result-title').textContent = 'Твій персональний результат:';
+          $('bmi-value').textContent = bmi.toFixed(1);
+ 
+          const status = $('bmi-status');
+          status.textContent = '';
+          const cat = document.createElement('span');
+          cat.className = colorClass + ' font-semibold';
+          cat.textContent = category;
+          status.append(cat, ' (норма 18.5 – 24.9)');
+ 
+          $('bmr-value').textContent = Math.round(baseBmr) + ' ккал';
+          $('bmr-status').textContent = 'Добова норма з урахуванням активності: ~' + totalDailyCalories + ' ккал';
+          $('recommendation-text').textContent = rec;
+          $('recommendation-box').classList.remove('hidden');
+          $('result-title').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+    </script>
+  </body>
+</html>
+ 

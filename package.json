@@ -1,0 +1,12 @@
+{
+  "name": "onovy-tilo",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./css/output.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./css/output.css --watch"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.17"
+  }
+}

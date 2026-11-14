@@ -47,7 +47,7 @@
     </script>
  
     <!-- Файл специфічних користувацьких стилів (skip-link, faq-icon) -->
-    <link rel="stylesheet" href="custom-styles.css" />
+    <link rel="stylesheet" href="assets/css/custom-styles.css" />
   </head>
   <body class="bg-brand-dark text-[#F5F5F2] font-body min-h-screen flex flex-col antialiased selection:bg-brand-primary selection:text-brand-dark"> 
     <!-- ===== HEADER: десктопне меню з xl (1280px), нижче — гамбургер ===== -->
@@ -64,6 +64,7 @@
             <li><a href="#how-it-works" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Як це працює</a></li>
             <li><a href="#calculator" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Калькулятор</a></li>
             <li><a href="#video" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Відео</a></li>
+            <li><a href="#gallery" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Галерея</a></li>
             <li><a href="#reviews" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Відгуки</a></li>
             <li><a href="#faq" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">FAQ</a></li>
             <li><a href="#feedback" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Зв'язок</a></li>
@@ -142,10 +143,11 @@
                 <i class="fa-solid fa-bolt text-[11px]" aria-hidden="true"></i>
                 Фітнес-кемп для нових звичок
               </span>
-              <h1 id="hero-title" class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15]">
-                Онови своє тіло <br class="hidden sm:inline" />
-                <span class="text-brand-primary">у власному темпі</span>
-              </h1>
+             <h1 id="hero-title" class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15]">
+  Онови своє тіло <br class="hidden sm:inline" />
+  <span id="typed-text" class="block min-h-[2.3em] sm:min-h-[1.15em] text-brand-primary" aria-hidden="true">у власному темпі</span>
+  <span class="sr-only">у власному темпі</span>
+</h1>
               <p class="text-base sm:text-lg md:text-xl text-brand-muted leading-relaxed max-w-2xl">
                 Оціни свої показники та обери напрям тренувань, який відповідає твоїм цілям. Професійний супровід, науковий розрахунок та підтримка спільноти.
               </p>
@@ -343,7 +345,69 @@
           </figure>
         </div>
       </section>
- 
+ <!-- ГАЛЕРЕЯ: Fancybox v5 -->
+<section id="gallery" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="gallery-title">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Фотогалерея</span>
+      <h2 id="gallery-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Життя кемпу</h2>
+      <p class="text-brand-muted mt-3 text-base">Натисніть на фото, щоб відкрити його на весь екран. Можна гортати та збільшувати.</p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+
+      <a href="assets/images/hero.webp" data-fancybox="camp-gallery" data-caption="Силове тренування: станова тяга"
+         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+        <img src="assets/images/hero-640.webp" alt="Станова тяга зі штангою у залі" width="640" height="360" loading="lazy"
+             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <a href="assets/images/card_weight_loss.jpg" data-fancybox="camp-gallery" data-caption="Кардіо та HIIT для зниження ваги"
+         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+        <img src="assets/images/card_weight_loss-400.webp" alt="Кардіо-тренування для схуднення" width="400" height="300" loading="lazy"
+             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <a href="assets/images/card_muscle_gain.jpg" data-fancybox="camp-gallery" data-caption="Прогресивні силові тренування"
+         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+        <img src="assets/images/card_muscle_gain-400.webp" alt="Силове тренування зі штангою" width="400" height="300" loading="lazy"
+             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <a href="assets/images/card_fitness_tone.jpg" data-fancybox="camp-gallery" data-caption="Мобільність, розтяжка та тонус"
+         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+        <img src="assets/images/card_fitness_tone-400.webp" alt="Функціональний тренінг та розтяжка" width="400" height="300" loading="lazy"
+             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const target = document.getElementById('typed-text');
+    if (!target) return;
+
+    // Поважаємо налаштування користувача «зменшити анімацію»
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    new Typed('#typed-text', {
+      strings: [
+        'у власному темпі',
+        'без зривів і стресу',
+        'з науковим підходом',
+        'разом із тренером',
+      ],
+      typeSpeed: 55,     // швидкість друку, мс на символ
+      backSpeed: 30,     // швидкість стирання
+      backDelay: 1600,   // пауза перед стиранням
+      startDelay: 600,   // пауза перед початком
+      loop: true,        // зациклення
+      smartBackspace: true, // стирає лише ту частину, що відрізняється
+    });
+  });
+</script>
       <!-- 4. ПРОГРАМИ -->
       <section id="programs" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="programs-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -470,50 +534,107 @@
             <h2 id="reviews-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Що говорять випускники кемпу</h2>
             <p class="text-brand-muted mt-3 text-base">Реальні історії людей, які налагодили звички та змінили якість свого життя.</p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            <div class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:border-brand-primary/50 transition-colors">
-              <figure class="m-0 flex flex-col justify-between h-full space-y-6">
-                <div>
-                  <div class="flex items-center gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                  </div>
-                  <blockquote class="m-0 text-white font-medium text-lg sm:text-xl leading-relaxed italic">«Знайшла комфортний ритм і стала регулярніше тренуватися без докорів сумління. За 2 місяці мінус 6 кг і море енергії!»</blockquote>
-                </div>
-                <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-                  <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ОЛ</div>
-                  <div>
-                    <div class="font-bold text-sm text-white">Олена Ковальчук</div>
-                    <div class="text-xs text-brand-muted">Учасниця програми «Зниження ваги»</div>
-                  </div>
-                </figcaption>
-              </figure>
+          <div class="relative md:px-14 max-w-6xl mx-auto">
+  <div class="swiper reviews-swiper pb-12">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide !h-auto">
+        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+          <div>
+            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
             </div>
-            <div class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:border-brand-primary/50 transition-colors">
-              <figure class="m-0 flex flex-col justify-between h-full space-y-6">
-                <div>
-                  <div class="flex items-center gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                    <i class="fa-solid fa-star" aria-hidden="true"></i>
-                  </div>
-                  <blockquote class="m-0 text-white font-medium text-lg sm:text-xl leading-relaxed italic">«Зрозумілий план тренувань та чіткі цифри BMR допомогли мені нарешті впевнено почати та наростити 4 кг чистих м'язів.»</blockquote>
-                </div>
-                <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-                  <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">АН</div>
-                  <div>
-                    <div class="font-bold text-sm text-white">Андрій Шевченко</div>
-                    <div class="text-xs text-brand-muted">Учасник програми «Набір м’язів»</div>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
+            <blockquote class="m-0 text-white leading-relaxed italic">«Знайшла комфортний ритм і стала регулярніше тренуватися без докорів сумління. За 2 місяці мінус 6 кг і море енергії!»</blockquote>
           </div>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+            <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ОК</div>
+            <div><div class="font-bold text-sm text-white">Олена Ковальчук</div><div class="text-xs text-brand-muted">Програма «Зниження ваги»</div></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="swiper-slide !h-auto">
+        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+          <div>
+            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="m-0 text-white leading-relaxed italic">«Зрозумілий план тренувань та чіткі цифри BMR допомогли мені нарешті впевнено почати та наростити 4 кг чистих м'язів.»</blockquote>
+          </div>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+            <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">АШ</div>
+            <div><div class="font-bold text-sm text-white">Андрій Шевченко</div><div class="text-xs text-brand-muted">Програма «Набір м’язів»</div></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="swiper-slide !h-auto">
+        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+          <div>
+            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="m-0 text-white leading-relaxed italic">«Калькулятор ІМТ підказав, з чого почати, а тренери скоригували навантаження під мою спину. Жодного дискомфорту!»</blockquote>
+          </div>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+            <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ІМ</div>
+            <div><div class="font-bold text-sm text-white">Ірина Мельник</div><div class="text-xs text-brand-muted">Програма «Підтримка форми»</div></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="swiper-slide !h-auto">
+        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+          <div>
+            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="m-0 text-white leading-relaxed italic">«Тиждень у Карпатах замінив мені пів року безсистемних занять. Щотижневі заміри дуже мотивують.»</blockquote>
+          </div>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+            <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ДБ</div>
+            <div><div class="font-bold text-sm text-white">Дмитро Бондаренко</div><div class="text-xs text-brand-muted">Програма «Зниження ваги»</div></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="swiper-slide !h-auto">
+        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+          <div>
+            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="m-0 text-white leading-relaxed italic">«Нарешті розібралась з білком і калоріями. Відео з технікою вправ врятували мене від травм.»</blockquote>
+          </div>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+            <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">СП</div>
+            <div><div class="font-bold text-sm text-white">Софія Петренко</div><div class="text-xs text-brand-muted">Програма «Набір м’язів»</div></div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="swiper-slide !h-auto">
+        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+          <div>
+            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+            </div>
+            <blockquote class="m-0 text-white leading-relaxed italic">«Прийшов новачком після 10 років сидячої роботи. За місяць повернулась витривалість, а разом з нею й настрій.»</blockquote>
+          </div>
+          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+            <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">МЛ</div>
+            <div><div class="font-bold text-sm text-white">Максим Лисенко</div><div class="text-xs text-brand-muted">Програма «Підтримка форми»</div></div>
+          </figcaption>
+        </figure>
+      </div>
+
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <button type="button" class="reviews-prev swiper-button-prev" aria-label="Попередній відгук"></button>
+  <button type="button" class="reviews-next swiper-button-next" aria-label="Наступний відгук"></button>
+</div>
         </div>
       </section>
  
@@ -837,6 +958,36 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const reviewsSwiper = new Swiper('.reviews-swiper', {
+      loop: true,
+      spaceBetween: 24,
+      grabCursor: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      pagination: { el: '.reviews-swiper .swiper-pagination', clickable: true },
+      navigation: { nextEl: '.reviews-next', prevEl: '.reviews-prev' },
+      breakpoints: {
+        320:  { slidesPerView: 1 },
+        768:  { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      },
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    Fancybox.bind('[data-fancybox="camp-gallery"]', {
+      Carousel: { transition: 'fade' },        // ефект переходу між фото
+      Images: { Panzoom: { maxScale: 3 } },    // збільшення до 3x
+      Hash: false,                             // не змінювати URL при відкритті
+    });
+  });
+</script>
   </body>
 </html>
  

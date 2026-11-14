@@ -28,7 +28,7 @@
   function validateAgreement(checked) {
     return checked ? '' : 'Потрібна згода з політикою конфіденційності.';
   }
-
+const touchedMap = {};
   const fields = [
     { id: 'username',  check: () => validateName($('username').value) },
     { id: 'email',     check: () => validateEmail($('email').value) },

@@ -110,3 +110,17 @@ details[open] {
     display: none !important;
   }
 }
+/* Swiper у кольорах бренду */
+.reviews-swiper {
+  --swiper-theme-color: #D4A72C;
+  --swiper-pagination-bullet-inactive-color: #A8A8AD;
+  --swiper-pagination-bullet-inactive-opacity: 0.5;
+}
+.reviews-prev, .reviews-next {
+  color: #D4A72C;
+  --swiper-navigation-size: 26px;
+}
+/* На мобільних стрілки ховаємо: там гортають свайпом */
+@media (max-width: 767px) {
+  .reviews-prev, .reviews-next { display: none; }
+}

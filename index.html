@@ -528,7 +528,96 @@
           </div>
         </div>
       </section>
- 
+ <!-- ===== ВІДЖЕТ: ВАРТІСТЬ УЧАСТІ (вставити після секції #programs) ===== -->
+<section id="price-calculator" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="pc-title">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Прозорі ціни</span>
+      <h2 id="pc-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Розрахуй вартість участі</h2>
+      <p class="text-brand-muted mt-3 text-base">Обери програму та додаткові опції — ціна оновлюється одразу.</p>
+    </div>
+
+    <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
+      <form id="pc-form" novalidate>
+        <fieldset class="space-y-6">
+          <legend class="text-lg font-heading font-bold text-brand-primary pb-3 border-b border-brand-border/30 w-full flex items-center gap-2">
+            <i class="fa-solid fa-coins" aria-hidden="true"></i>
+            <span>Параметри програми</span>
+          </legend>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
+            <div class="space-y-2">
+              <label for="pc-program" class="block text-sm font-semibold text-white">Програма</label>
+              <select id="pc-program" name="pc-program" aria-describedby="pc-program-error" aria-invalid="false"
+                class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors">
+                <option value="loss">Зниження ваги — 4 200 грн/тиж.</option>
+                <option value="muscle">Набір м’язів — 4 800 грн/тиж.</option>
+                <option value="tone">Підтримка форми — 3 600 грн/тиж.</option>
+              </select>
+              <p id="pc-program-error" class="hidden text-sm text-red-400" role="alert"></p>
+            </div>
+
+            <div class="space-y-2">
+              <label for="pc-weeks" class="block text-sm font-semibold text-white">Тривалість, тижнів <span class="text-brand-primary" aria-hidden="true">*</span></label>
+              <input id="pc-weeks" name="pc-weeks" type="number" inputmode="numeric" min="1" max="12" step="1" value="2" required
+                aria-describedby="pc-weeks-hint pc-weeks-error" aria-invalid="false"
+                class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white placeholder-brand-muted/80 focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors" />
+              <p id="pc-weeks-hint" class="text-xs text-brand-muted">Від 1 до 12. Знижка: від 4 тижнів −5%, від 8 тижнів −10%.</p>
+              <p id="pc-weeks-error" class="hidden text-sm text-red-400" role="alert"></p>
+            </div>
+
+            <fieldset class="sm:col-span-2">
+              <legend class="block text-sm font-semibold text-white mb-2">Формат занять</legend>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <input id="pc-format-group" type="radio" name="pc-format" value="group" checked class="peer sr-only" />
+                  <label for="pc-format-group" class="flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 rounded-lg border border-brand-border bg-brand-dark text-sm text-white cursor-pointer transition-colors hover:border-brand-primary peer-checked:border-brand-primary peer-checked:bg-brand-primary/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-focus">
+                    <span>Група</span><span class="text-brand-muted">входить</span>
+                  </label>
+                </div>
+                <div>
+                  <input id="pc-format-personal" type="radio" name="pc-format" value="personal" class="peer sr-only" />
+                  <label for="pc-format-personal" class="flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 rounded-lg border border-brand-border bg-brand-dark text-sm text-white cursor-pointer transition-colors hover:border-brand-primary peer-checked:border-brand-primary peer-checked:bg-brand-primary/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-focus">
+                    <span>Індивідуальний тренер</span><span class="text-brand-muted">+1 800 грн/тиж.</span>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="flex items-center gap-3 min-h-[44px]">
+              <input id="pc-menu" name="pc-menu" type="checkbox" class="h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
+              <label for="pc-menu" class="text-sm text-white">Індивідуальне меню <span class="text-brand-muted">+900 грн/тиж.</span></label>
+            </div>
+            <div class="flex items-center gap-3 min-h-[44px]">
+              <input id="pc-lodging" name="pc-lodging" type="checkbox" class="h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
+              <label for="pc-lodging" class="text-sm text-white">Проживання на базі <span class="text-brand-muted">+2 500 грн/тиж.</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="mt-8 p-5 sm:p-6 rounded-xl bg-brand-surface-alt border-l-4 border-brand-primary" aria-live="polite">
+        <h3 class="font-heading font-bold text-lg text-white mb-1 flex items-center gap-2">
+          <i class="fa-solid fa-receipt text-brand-primary" aria-hidden="true"></i>
+          <span>Орієнтовна вартість</span>
+        </h3>
+        <p id="pc-summary" class="text-xs text-brand-muted">—</p>
+        <p id="pc-total" class="font-heading font-bold text-3xl sm:text-4xl text-brand-primary mt-2 break-words">—</p>
+
+        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-sm">
+          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Програма</dt><dd id="pc-base" class="text-white font-semibold">—</dd></div>
+          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Додаткові опції</dt><dd id="pc-extras" class="text-white font-semibold">—</dd></div>
+          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Знижка за тривалість</dt><dd id="pc-discount" class="text-white font-semibold">—</dd></div>
+          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Вступна діагностика (разово)</dt><dd id="pc-fee" class="text-white font-semibold">1 000 грн</dd></div>
+        </dl>
+      </div>
+
+      <div class="pt-6 flex justify-center sm:justify-end">
+        <a href="#feedback" class="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">Забронювати місце</a>
+      </div>
+    </div>
+  </div>
+</section>
       <!-- 5. ВІДГУКИ -->
       <section id="reviews" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="reviews-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -854,6 +943,7 @@
 </div>
 
 <script src="assets/js/validation.js" defer></script>
+<script src="assets/js/widget.js" defer></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         // 1. Мобільне меню (гамбургер)

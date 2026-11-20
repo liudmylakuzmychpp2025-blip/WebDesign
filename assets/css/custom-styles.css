@@ -124,3 +124,4 @@ details[open] {
 @media (max-width: 767px) {
   .reviews-prev, .reviews-next { display: none; }
 }
+.fa-solid, .fa-brands { display: inline-block; width: 1.25em; text-align: center; }

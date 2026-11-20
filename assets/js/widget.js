@@ -1,6 +1,8 @@
 /**
  * Віджет «Вартість участі в кемпі» — Vanilla JS.
  * Формула: (ціна програми + тренер + меню + проживання) × тижні − знижка + діагностика.
+ * Знижка діє лише на тижневі послуги. Діагностика — разова, без знижки.
+ * Також: кнопка «Розрахувати вартість» з калькулятора ІМТ.
  * Код ізольовано в IIFE: глобальних змінних і функцій немає.
  */
 (function () {
@@ -15,7 +17,7 @@
   const TRAINER_WEEKLY = 1800;   // індивідуальний тренер
   const MENU_WEEKLY = 900;       // індивідуальне меню
   const LODGING_WEEKLY = 2500;   // проживання на базі
-  const DIAGNOSTICS_FEE = 1000;  // разова вступна діагностика
+  const DIAGNOSTICS_FEE = 1000;  // разова вступна діагностика (не множиться, без знижки)
   const MIN_WEEKS = 1;
   const MAX_WEEKS = 12;
 
@@ -78,17 +80,16 @@
     const program = Object.prototype.hasOwnProperty.call(PROGRAMS, programKey) ? PROGRAMS[programKey] : null;
     if (!program || !Number.isInteger(weeks)) return null;
 
-    const baseWeekly = program.weekly;
     const extrasWeekly =
       (withTrainer ? TRAINER_WEEKLY : 0) +
       (withMenu ? MENU_WEEKLY : 0) +
       (withLodging ? LODGING_WEEKLY : 0);
 
-    const base = baseWeekly * weeks;
+    const base = program.weekly * weeks;
     const extras = extrasWeekly * weeks;
     const pct = discountPercent(weeks);
-    const discount = Math.round(((base + extras) * pct) / 100);
-    const total = base + extras - discount + DIAGNOSTICS_FEE;
+    const discount = Math.round(((base + extras) * pct) / 100); // знижка лише на тижневі послуги
+    const total = base + extras - discount + DIAGNOSTICS_FEE;   // діагностика додається один раз
 
     return { label: program.label, base, extras, pct, discount, total };
   }
@@ -130,13 +131,40 @@
 
     el['pc-total'].textContent = money(r.total);
     el['pc-summary'].textContent =
-      r.label + ', ' + weeksResult.weeks + ' тиж.' +
+   r.label + ', ' + weeksResult.weeks + ' тиж. · включно з обов’язковою разовою діагностикою ' +
+      money(DIAGNOSTICS_FEE) +
       (weeksResult.adjusted ? ' (кількість тижнів округлено до цілого)' : '');
     el['pc-base'].textContent = money(r.base);
     el['pc-extras'].textContent = r.extras > 0 ? '+ ' + money(r.extras) : '—';
     el['pc-discount'].textContent = r.pct > 0 ? '− ' + money(r.discount) + ' (' + r.pct + '%)' : '—';
     el['pc-fee'].textContent = money(DIAGNOSTICS_FEE);
   }
+
+  // ---------- Кнопка з калькулятора ІМТ → розрахунок вартості ----------
+  function goToPrice(btn) {
+    const key = btn.dataset.program;
+    if (Object.prototype.hasOwnProperty.call(PROGRAMS, key)) {
+      el['pc-program'].value = key;
+    }
+    update();
+
+    const section = document.getElementById('price-calculator');
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+
+    // Короткий візуальний акцент на вибраній програмі + фокус для клавіатури
+    const highlight = ['ring-2', 'ring-brand-primary'];
+    el['pc-program'].classList.add(...highlight);
+    setTimeout(() => {
+      el['pc-program'].focus({ preventScroll: true });
+      setTimeout(() => el['pc-program'].classList.remove(...highlight), 1600);
+    }, reduceMotion ? 0 : 500);
+  }
+
+  const goBtn = document.getElementById('go-to-price');
+  if (goBtn) goBtn.addEventListener('click', () => goToPrice(goBtn));
 
   // ---------- Події ----------
   el['pc-weeks'].addEventListener('input', update);

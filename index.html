@@ -260,9 +260,14 @@
                 </div>
               </div>
               <div id="recommendation-box" class="mt-4 p-3 rounded-lg bg-brand-primary/10 border border-brand-primary/30 text-xs text-white hidden">
-                <strong class="text-brand-primary font-semibold">Рекомендований напрям: </strong>
-                <span id="recommendation-text"></span>
-              </div>
+  <strong class="text-brand-primary font-semibold">Рекомендований напрям: </strong>
+  <span id="recommendation-text"></span>
+  <button type="button" id="go-to-price" data-program="loss"
+    class="mt-3 w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+    <i class="fa-solid fa-coins" aria-hidden="true"></i>
+    <span>Розрахувати вартість</span>
+  </button>
+</div>
             </div>
           </div>
         </div>
@@ -530,6 +535,41 @@
       </section>
  <!-- ===== ВІДЖЕТ: ВАРТІСТЬ УЧАСТІ (вставити після секції #programs) ===== -->
 <section id="price-calculator" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="pc-title">
+  <!-- Обов'язкова вступна діагностика -->
+<div class="mb-8 p-5 sm:p-6 rounded-2xl bg-brand-primary/10 border border-brand-primary/40" role="note" aria-labelledby="diag-title">
+  <div class="flex items-start gap-4">
+    <div class="shrink-0 w-12 h-12 rounded-xl bg-brand-surface border border-brand-primary/40 flex items-center justify-center text-brand-primary text-xl">
+      <i class="fa-solid fa-stethoscope" aria-hidden="true"></i>
+    </div>
+    <div class="space-y-3">
+      <h3 id="diag-title" class="font-heading font-bold text-lg text-white">
+        Обов’язкова разова діагностика — 1 000 грн
+      </h3>
+      <p class="text-sm text-brand-muted leading-relaxed">
+        Перед стартом кожен учасник проходить вступну діагностику. Вона оплачується <strong class="text-white">один раз</strong> незалежно від тривалості участі, до неї <strong class="text-white">не застосовується знижка</strong>, а її вартість уже включена в орієнтовну суму нижче.
+      </p>
+      <p class="text-sm text-white font-semibold">Навіщо вона потрібна:</p>
+      <ul class="space-y-2 text-sm text-brand-muted list-none p-0 m-0">
+        <li class="flex items-start gap-2">
+          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+          <span><strong class="text-white">Безпека.</strong> Тренер з’ясовує стан здоров’я, травми та можливі обмеження, щоб навантаження не нашкодило.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+          <span><strong class="text-white">Точна стартова точка.</strong> Заміри ваги, обʼємів і складу тіла, щоб потім бачити реальний прогрес.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+          <span><strong class="text-white">Оцінка техніки та мобільності.</strong> Перевірка базових рухів і постави, щоб уникнути помилок у вправах.</span>
+        </li>
+        <li class="flex items-start gap-2">
+          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+          <span><strong class="text-white">Індивідуальний план.</strong> На основі результатів тренер підбирає рівень складності, навантаження й харчування саме під вас.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto mb-10">
       <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Прозорі ціни</span>
@@ -608,9 +648,11 @@
           <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Програма</dt><dd id="pc-base" class="text-white font-semibold">—</dd></div>
           <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Додаткові опції</dt><dd id="pc-extras" class="text-white font-semibold">—</dd></div>
           <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Знижка за тривалість</dt><dd id="pc-discount" class="text-white font-semibold">—</dd></div>
-          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Вступна діагностика (разово)</dt><dd id="pc-fee" class="text-white font-semibold">1 000 грн</dd></div>
-        </dl>
-      </div>
+<div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30">
+  <dt class="text-xs text-brand-muted">Вступна діагностика (обов’язкова, разово, без знижки)</dt>
+  <dd id="pc-fee" class="text-white font-semibold">1 000 грн</dd>
+</div>
+</dl>
 
       <div class="pt-6 flex justify-center sm:justify-end">
         <a href="#feedback" class="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">Забронювати місце</a>
@@ -1014,22 +1056,23 @@
           const baseBmr = 10 * weight + 6.25 * height - 5 * age + (sex === 'male' ? 5 : -161);
           const totalDailyCalories = Math.round(baseBmr * activity);
  
-          let category, rec, colorClass;
-          if (bmi < 18.5) {
-            category = 'Недостатня вага'; colorClass = 'text-amber-400';
-            rec = '«Набір м’язів» — профіцит калорій та силові заняття для набору маси.';
-          } else if (bmi < 25) {
-            category = 'Нормальна вага'; colorClass = 'text-emerald-400';
-            rec = '«Підтримка форми» або «Набір м’язів» для розвитку функціональності та тонусу.';
-          } else if (bmi < 30) {
-            category = 'Надлишкова вага'; colorClass = 'text-brand-primary';
-            rec = '«Зниження ваги» — помірний дефіцит калорій та кардіо-функціональний комплекс.';
-          } else {
-            category = 'Ожиріння'; colorClass = 'text-red-400';
-            rec = '«Зниження ваги» під пильним наглядом наставника та нутриціолога.';
-          }
+        let category, rec, colorClass, programKey;
+if (bmi < 18.5) {
+  category = 'Недостатня вага'; colorClass = 'text-amber-400'; programKey = 'muscle';
+  rec = '«Набір м’язів» — профіцит калорій та силові заняття для набору маси.';
+} else if (bmi < 25) {
+  category = 'Нормальна вага'; colorClass = 'text-emerald-400'; programKey = 'tone';
+  rec = '«Підтримка форми» або «Набір м’язів» для розвитку функціональності та тонусу.';
+} else if (bmi < 30) {
+  category = 'Надлишкова вага'; colorClass = 'text-brand-primary'; programKey = 'loss';
+  rec = '«Зниження ваги» — помірний дефіцит калорій та кардіо-функціональний комплекс.';
+} else {
+  category = 'Ожиріння'; colorClass = 'text-red-400'; programKey = 'loss';
+  rec = '«Зниження ваги» під пильним наглядом наставника та нутриціолога.';
+}
  
           $('result-title').textContent = 'Твій персональний результат:';
+          $('go-to-price').dataset.program = programKey;
           $('bmi-value').textContent = bmi.toFixed(1);
  
           const status = $('bmi-status');

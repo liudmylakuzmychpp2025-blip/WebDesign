@@ -3,55 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Фітнес-кемп «Онови своє тіло»: інтерактивний калькулятор ІМТ і BMR, адаптивні програми тренувань, відео та відгуки учасників на Tailwind CSS." />
-    <title>Онови своє тіло — фітнес-кемп | Лабораторна робота №9</title>
+    <meta name="description" content="Фітнес-кемп «Онови своє тіло»: інтерактивний калькулятор ІМТ і BMR, адаптивні програми тренувань, відео та відгуки учасників." />
+    <title>Онови своє тіло — фітнес-кемп</title>
+
     <link rel="icon" href="assets/images/logo.svg" type="image/svg+xml" />
- 
-    <!-- Google Fonts: Inter & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet" />
- 
-    <!-- FontAwesome 6 CDN для іконок --> 
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" /></noscript>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-    <!-- Tailwind CSS (CDN згідно з методичкою; для продакшену — Tailwind CLI/PostCSS) -->
-    <script src="https://cdn.tailwindcss.com"></script>
- 
-    <!-- Налаштування дизайн-системи в Tailwind -->
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                primary: '#D4A72C', 'primary-hover': '#E6BC48', 'primary-pressed': '#B88F1F',
-                secondary: '#2E2E33', accent: '#F2D675', dark: '#0F0F10',
-                surface: '#1A1A1C', 'surface-alt': '#232326', border: '#6B6B72',
-                muted: '#A8A8AD', focus: '#8AB4FF', success: '#4ADE80',
-              },
-            },
-            fontFamily: {
-              heading: ['Montserrat', 'system-ui', 'sans-serif'],
-              body: ['Inter', 'system-ui', 'sans-serif'],
-            },
-            boxShadow: {
-              card: '0 6px 16px rgba(0, 0, 0, 0.45)',
-              'card-hover': '0 16px 40px rgba(212, 167, 44, 0.16)',
-            },
-          },
-        },
-      };
-    </script>
- 
-    <!-- Файл специфічних користувацьких стилів (skip-link, faq-icon) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" /></noscript>
+
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
     <link rel="stylesheet" href="assets/css/custom-styles.css" />
-    <meta property="og:image" content="https://bolt.new/static/og_default.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
   </head>
+  <body id="top" class="bg-brand-dark ...">
   <body id="top" class= "bg-brand-dark text-[#F5F5F2] font-body min-h-screen flex flex-col antialiased selection:bg-brand-primary selection:text-brand-dark"> 
     <!-- ===== HEADER: десктопне меню з xl (1280px), нижче — гамбургер ===== -->
     <header class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border/40 transition-colors">
@@ -391,7 +364,11 @@
     </div>
   </div>
 </section>
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 <script>
+  
   document.addEventListener('DOMContentLoaded', () => {
     const target = document.getElementById('typed-text');
     if (!target) return;
@@ -536,7 +513,15 @@
  <!-- ===== ВІДЖЕТ: ВАРТІСТЬ УЧАСТІ (вставити після секції #programs) ===== -->
 <section id="price-calculator" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="pc-title">
   <!-- Обов'язкова вступна діагностика -->
-<div class="mb-8 p-5 sm:p-6 rounded-2xl bg-brand-primary/10 border border-brand-primary/40" role="note" aria-labelledby="diag-title">
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Прозорі ціни</span>
+      <h2 id="pc-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Розрахуй вартість участі</h2>
+      <p class="text-brand-muted mt-3 text-base">Обери програму та додаткові опції — ціна оновлюється одразу.</p>
+    </div>
+
+    <div class="mb-8 p-5 sm:p-6 rounded-2xl bg-brand-primary/10 border border-brand-primary/40" role="note" aria-labelledby="diag-title">
   <div class="flex items-start gap-4">
     <div class="shrink-0 w-12 h-12 rounded-xl bg-brand-surface border border-brand-primary/40 flex items-center justify-center text-brand-primary text-xl">
       <i class="fa-solid fa-stethoscope" aria-hidden="true"></i>
@@ -570,12 +555,6 @@
     </div>
   </div>
 </div>
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Прозорі ціни</span>
-      <h2 id="pc-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Розрахуй вартість участі</h2>
-      <p class="text-brand-muted mt-3 text-base">Обери програму та додаткові опції — ціна оновлюється одразу.</p>
-    </div>
 
     <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
       <form id="pc-form" novalidate>
@@ -1091,9 +1070,7 @@ if (bmi < 18.5) {
       });
 
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+ 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const reviewsSwiper = new Swiper('.reviews-swiper', {

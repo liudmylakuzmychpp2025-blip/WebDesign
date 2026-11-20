@@ -11,10 +11,10 @@ module.exports = {
           muted: '#A8A8AD', focus: '#8AB4FF', success: '#4ADE80',
         },
       },
-      fontFamily: {
-        heading: ['Montserrat', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-      },
+     fontFamily: {
+  heading: ['"Montserrat Variable"', 'system-ui', 'sans-serif'],
+  body: ['"Inter Variable"', 'system-ui', 'sans-serif'],
+},
       boxShadow: {
         card: '0 6px 16px rgba(0, 0, 0, 0.45)',
         'card-hover': '0 16px 40px rgba(212, 167, 44, 0.16)',

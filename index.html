@@ -10,33 +10,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
 
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" /></noscript>
+    <!-- Шрифти -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
 
+    <!-- Іконки та бібліотеки -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-solid-900.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-brands-400.woff2" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
-      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" /></noscript>
-<link rel="preload" as="font" type="font/woff2" crossorigin
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-brands-400.woff2" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+
+    <!-- Власні стилі -->
     <link rel="stylesheet" href="assets/css/tailwind.css" />
     <link rel="stylesheet" href="assets/css/custom-styles.css" />
+
+    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script defer src="assets/js/validation.js"></script>
+    <script defer src="assets/js/widget.js"></script>
   </head>
-  <body id="top" class="bg-brand-dark ...">
-  <body id="top" class= "bg-brand-dark text-[#F5F5F2] font-body min-h-screen flex flex-col antialiased selection:bg-brand-primary selection:text-brand-dark"> 
-    <!-- ===== HEADER: десктопне меню з xl (1280px), нижче — гамбургер ===== -->
+  <body id="top" class="bg-brand-dark text-[#F5F5F2] font-body min-h-screen flex flex-col antialiased selection:bg-brand-primary selection:text-brand-dark">
+    <!-- ===== HEADER ===== -->
     <header class="sticky top-0 z-50 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border/40 transition-colors">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         <a class="flex items-center gap-3 group rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#top">
           <img src="assets/images/logo.svg" alt="Логотип «Онови своє тіло»" width="40" height="40" class="h-10 w-10 transition-transform duration-300 group-hover:scale-105" />
           <span class="font-heading font-bold text-lg sm:text-xl text-white group-hover:text-brand-primary transition-colors">Онови своє тіло</span>
         </a>
- 
+
         <nav class="hidden xl:flex items-center" aria-label="Головна навігація">
           <ul class="flex items-center gap-6 xl:gap-8 m-0 p-0 list-none text-sm font-medium">
             <li><a href="#programs" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Програми</a></li>
@@ -50,7 +54,7 @@
             <li><a href="#contacts" class="text-brand-muted hover:text-brand-primary transition-colors py-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Контакти</a></li>
           </ul>
         </nav>
- 
+
         <div class="flex items-center gap-3">
           <a class="hidden sm:inline-flex items-center justify-center min-h-[44px] px-5 lg:px-6 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 text-sm tracking-wide shadow-md hover:shadow-lg hover:shadow-brand-primary/20 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark" href="#calculator">Розрахувати програму</a>
           <button id="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Відкрити головне меню"
@@ -60,7 +64,7 @@
           </button>
         </div>
       </div>
- 
+
       <nav id="mobile-menu" class="hidden xl:hidden border-t border-brand-border/30 bg-brand-surface/95 backdrop-blur-md px-4 pt-3 pb-6 shadow-2xl" aria-label="Мобільна навігація">
         <ul class="space-y-1 list-none p-0 m-0 text-base font-medium">
           <li>
@@ -111,7 +115,7 @@
         </div>
       </nav>
     </header>
- 
+
     <main id="main" class="flex-grow">
       <!-- 1. HERO -->
       <section class="relative py-12 sm:py-16 lg:py-20 bg-brand-surface border-b border-brand-border/30 overflow-hidden" aria-labelledby="hero-title">
@@ -122,11 +126,11 @@
                 <i class="fa-solid fa-bolt text-[11px]" aria-hidden="true"></i>
                 Фітнес-кемп для нових звичок
               </span>
-             <h1 id="hero-title" class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15]">
-  Онови своє тіло <br class="hidden sm:inline" />
-  <span id="typed-text" class="inline-block min-h-[1.15em] text-brand-primary" aria-hidden="true">у власному темпі</span>
-  <span class="sr-only">у власному темпі</span>
-</h1>
+              <h1 id="hero-title" class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.15]">
+                Онови своє тіло <br class="hidden sm:inline" />
+                <span id="typed-text" class="inline-block min-h-[1.15em] text-brand-primary" aria-hidden="true">у власному темпі</span>
+                <span class="sr-only">у власному темпі</span>
+              </h1>
               <p class="text-base sm:text-lg md:text-xl text-brand-muted leading-relaxed max-w-2xl">
                 Оціни свої показники та обери напрям тренувань, який відповідає твоїм цілям. Професійний супровід, науковий розрахунок та підтримка спільноти.
               </p>
@@ -147,16 +151,17 @@
               <div class="relative group">
                 <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-brand-primary/30 to-brand-accent/20 blur-xl opacity-50 group-hover:opacity-80 transition duration-500" aria-hidden="true"></div>
                 <img src="assets/images/hero-1200.webp"
-     srcset="assets/images/hero-640.webp 640w, assets/images/hero-1200.webp 1200w"
-     sizes="(min-width:1024px) 40vw, 100vw"
-     alt="Чоловік виконує станову тягу зі штангою у тренажерному залі"
-     width="1920" height="1080" fetchpriority="high"
-     class="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] object-cover rounded-2xl border border-brand-border/50 shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]" />
+                  srcset="assets/images/hero-640.webp 640w, assets/images/hero-1200.webp 1200w"
+                  sizes="(min-width:1024px) 40vw, 100vw"
+                  alt="Чоловік виконує станову тягу зі штангою у тренажерному залі"
+                  width="1920" height="1080" fetchpriority="high"
+                  class="relative w-full h-[320px] sm:h-[400px] lg:h-[460px] object-cover rounded-2xl border border-brand-border/50 shadow-2xl transition-transform duration-500 group-hover:scale-[1.01]" />
+              </div>
             </div>
           </div>
         </div>
       </section>
- 
+
       <!-- 2. КАЛЬКУЛЯТОР ІМТ / BMR -->
       <section id="calculator" class="py-16 sm:py-20 bg-brand-dark relative scroll-mt-20" aria-labelledby="calculator-title">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,7 +170,7 @@
             <h2 id="calculator-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Калькулятор програми</h2>
             <p class="text-brand-muted mt-3 text-base">Вкажи основні дані для миттєвого індивідуального розрахунку індексу маси тіла (ІМТ) та базового обміну речовин (BMR).</p>
           </div>
- 
+
           <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
             <form id="bmi-form" novalidate>
               <fieldset class="space-y-6">
@@ -173,7 +178,7 @@
                   <i class="fa-solid fa-calculator" aria-hidden="true"></i>
                   <span>Параметри для розрахунку</span>
                 </legend>
- 
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
                   <div class="space-y-2">
                     <label for="sex" class="block text-sm font-semibold text-white">Стать</label>
@@ -207,9 +212,9 @@
                     </select>
                   </div>
                 </div>
- 
+
                 <p id="form-error" role="alert" class="hidden text-sm font-semibold text-red-400 bg-red-400/10 border border-red-400/30 rounded-lg px-4 py-3"></p>
- 
+
                 <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <button type="submit" class="w-full sm:w-auto min-h-[44px] px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 text-base shadow-md hover:shadow-lg flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
                     <i class="fa-solid fa-play text-xs" aria-hidden="true"></i>
@@ -219,7 +224,7 @@
                 </div>
               </fieldset>
             </form>
- 
+
             <!-- Результати (озвучуються скрінрідером через aria-live) -->
             <div id="result-box" aria-live="polite" class="mt-8 p-5 sm:p-6 rounded-xl bg-brand-surface-alt border-l-4 border-brand-primary transition-all duration-300">
               <h3 class="font-heading font-bold text-lg text-white mb-2 flex items-center gap-2">
@@ -239,19 +244,19 @@
                 </div>
               </div>
               <div id="recommendation-box" class="mt-4 p-3 rounded-lg bg-brand-primary/10 border border-brand-primary/30 text-xs text-white hidden">
-  <strong class="text-brand-primary font-semibold">Рекомендований напрям: </strong>
-  <span id="recommendation-text"></span>
-  <button type="button" id="go-to-price" data-program="loss"
-    class="mt-3 w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
-    <i class="fa-solid fa-coins" aria-hidden="true"></i>
-    <span>Розрахувати вартість</span>
-  </button>
-</div>
+                <strong class="text-brand-primary font-semibold">Рекомендований напрям: </strong>
+                <span id="recommendation-text"></span>
+                <button type="button" id="go-to-price" data-program="loss"
+                  class="mt-3 w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">
+                  <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                  <span>Розрахувати вартість</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
- 
+
       <!-- 3. ЯК ЦЕ ПРАЦЮЄ -->
       <section id="how-it-works" class="py-16 sm:py-20 bg-brand-surface border-b border-brand-border/30 scroll-mt-20" aria-labelledby="how-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -261,7 +266,6 @@
             <p class="text-brand-muted mt-3 text-base">Шлях до нового здорового тіла починається зі зрозумілого алгоритму та чіткої послідовності дій.</p>
           </div>
           <ol class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 list-none p-0 m-0">
-            <!-- Крок 01 -->
             <li class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card group">
               <div>
                 <div class="w-14 h-14 rounded-xl bg-brand-surface border border-brand-border/50 flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
@@ -276,7 +280,6 @@
                 <span>Займає менше 1 хвилини</span>
               </div>
             </li>
-            <!-- Крок 02 -->
             <li class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card group">
               <div>
                 <div class="w-14 h-14 rounded-xl bg-brand-surface border border-brand-border/50 flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
@@ -291,7 +294,6 @@
                 <span>3 адаптивні рівні складності</span>
               </div>
             </li>
-            <!-- Крок 03 -->
             <li class="bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:border-brand-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-card group">
               <div>
                 <div class="w-14 h-14 rounded-xl bg-brand-surface border border-brand-border/50 flex items-center justify-center text-brand-primary text-2xl mb-6 group-hover:scale-110 transition-transform">
@@ -309,11 +311,8 @@
           </ol>
         </div>
       </section>
- 
-      <!-- ============================================================= -->
-      <!-- МЕДІА-ІНТЕГРАЦІЯ 1: YouTube-відео (адаптивний контейнер 16:9)    -->
-      <!-- Замініть VIDEO_ID на ID свого відео з YouTube (Поділитися → Вбудувати) -->
-      <!-- ============================================================= -->
+
+      <!-- ВІДЕО -->
       <section id="video" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="video-title">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-2xl mx-auto mb-10">
@@ -332,76 +331,44 @@
           </figure>
         </div>
       </section>
- <!-- ГАЛЕРЕЯ: Fancybox v5 -->
-<section id="gallery" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="gallery-title">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Фотогалерея</span>
-      <h2 id="gallery-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Життя кемпу</h2>
-      <p class="text-brand-muted mt-3 text-base">Натисніть на фото, щоб відкрити його на весь екран. Можна гортати та збільшувати.</p>
-    </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-<a href="assets/images/card_weight_loss-800.webp" data-fancybox="camp-gallery" ...></a>
-      <a href="assets/images/hero.webp" data-fancybox="camp-gallery" data-caption="Силове тренування: станова тяга"
-         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
-        <img src="assets/images/hero-640.webp" alt="Станова тяга зі штангою у залі" width="640" height="360" loading="lazy"
-             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
-      </a>
+      <!-- ГАЛЕРЕЯ: Fancybox v5 -->
+      <section id="gallery" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="gallery-title">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Фотогалерея</span>
+            <h2 id="gallery-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Життя кемпу</h2>
+            <p class="text-brand-muted mt-3 text-base">Натисніть на фото, щоб відкрити його на весь екран. Можна гортати та збільшувати.</p>
+          </div>
 
-      <a href="assets/images/card_weight_loss.jpg" data-fancybox="camp-gallery" data-caption="Кардіо та HIIT для зниження ваги"
-         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
-       <img src="assets/images/card_weight_loss-800.webp"
-     srcset="assets/images/card_weight_loss-400.webp 400w, assets/images/card_weight_loss-800.webp 800w"
-     sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-     alt="Тренування для схуднення та кардіо" width="800" height="600" loading="lazy"
-     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-      </a>
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            <a href="assets/images/hero-1200.webp" data-fancybox="camp-gallery" data-caption="Силове тренування: станова тяга"
+              class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+              <img src="assets/images/hero-640.webp" alt="Станова тяга зі штангою у залі" width="640" height="360" loading="lazy"
+                class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+            </a>
 
-      <a href="assets/images/card_muscle_gain.jpg" data-fancybox="camp-gallery" data-caption="Прогресивні силові тренування"
-         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
-        <img src="assets/images/card_muscle_gain-400.webp" alt="Силове тренування зі штангою" width="400" height="300" loading="lazy"
-             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
-      </a>
+            <a href="assets/images/card_weight_loss-800.webp" data-fancybox="camp-gallery" data-caption="Кардіо та HIIT для зниження ваги"
+              class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+              <img src="assets/images/card_weight_loss-400.webp" alt="Кардіо-тренування для схуднення" width="400" height="300" loading="lazy"
+                class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+            </a>
 
-      <a href="assets/images/card_fitness_tone.jpg" data-fancybox="camp-gallery" data-caption="Мобільність, розтяжка та тонус"
-         class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
-        <img src="assets/images/card_fitness_tone-400.webp" alt="Функціональний тренінг та розтяжка" width="400" height="300" loading="lazy"
-             class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
-      </a>
+            <a href="assets/images/card_muscle_gain-800.webp" data-fancybox="camp-gallery" data-caption="Прогресивні силові тренування"
+              class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+              <img src="assets/images/card_muscle_gain-400.webp" alt="Силове тренування зі штангою" width="400" height="300" loading="lazy"
+                class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+            </a>
 
-    </div>
-  </div>
-</section>
-<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script>
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    const target = document.getElementById('typed-text');
-    if (!target) return;
+            <a href="assets/images/card_fitness_tone-800.webp" data-fancybox="camp-gallery" data-caption="Мобільність, розтяжка та тонус"
+              class="group block overflow-hidden rounded-xl border border-brand-border/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">
+              <img src="assets/images/card_fitness_tone-400.webp" alt="Функціональний тренінг та розтяжка" width="400" height="300" loading="lazy"
+                class="w-full aspect-[4/3] object-cover cursor-zoom-in transition-transform duration-300 group-hover:scale-105" />
+            </a>
+          </div>
+        </div>
+      </section>
 
-    // Поважаємо налаштування користувача «зменшити анімацію»
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-
-    new Typed('#typed-text', {
-      strings: [
-        'у власному темпі',
-        'без зривів і стресу',
-        'з науковим підходом',
-        'разом із тренером',
-      ],
-      typeSpeed: 55,     // швидкість друку, мс на символ
-      backSpeed: 30,     // швидкість стирання
-      backDelay: 1600,   // пауза перед стиранням
-      startDelay: 600,   // пауза перед початком
-      loop: true,        // зациклення
-      smartBackspace: true, // стирає лише ту частину, що відрізняється
-    });
-  });
-</script>
       <!-- 4. ПРОГРАМИ -->
       <section id="programs" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="programs-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -411,11 +378,14 @@
             <p class="text-brand-muted mt-3 text-base">Кожна програма створена сертифікованими тренерами та нутриціологами для безпечного і стабільного результату.</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            <!-- Картка: Зниження ваги -->
+            <!-- Зниження ваги -->
             <article class="bg-brand-surface border border-brand-border/40 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-primary/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover group">
               <div>
                 <div class="relative h-48 w-full overflow-hidden bg-brand-surface-alt">
-                  <img src="assets/images/card_weight_loss.jpg" alt="Тренування для схуднення та кардіо" width="800" height="600" loading="lazy"
+                  <img src="assets/images/card_weight_loss-800.webp"
+                    srcset="assets/images/card_weight_loss-400.webp 400w, assets/images/card_weight_loss-800.webp 800w"
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    alt="Тренування для схуднення та кардіо" width="800" height="600" loading="lazy"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-dark/80 backdrop-blur border text-brand-primary border-brand-primary/40">Найпопулярніша</span>
                 </div>
@@ -423,18 +393,9 @@
                   <h3 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-brand-primary transition-colors">Зниження ваги</h3>
                   <p class="text-brand-muted text-sm mb-4 leading-relaxed">Збалансовані кардіо та функціональні навантаження у поєднанні з м'яким дефіцитом калорій без стресу для організму.</p>
                   <ul class="space-y-2 text-xs text-brand-muted border-t border-brand-border/30 pt-4 list-none p-0">
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>4 тренування на тиждень (HIIT + Cardio)</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Індивідуальний план харчування</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Щотижневі заміри та корекція навантаження</span>
-                    </li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>4 тренування на тиждень (HIIT + Cardio)</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Індивідуальний план харчування</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Щотижневі заміри та корекція навантаження</span></li>
                   </ul>
                 </div>
               </div>
@@ -446,11 +407,14 @@
                 </a>
               </div>
             </article>
-            <!-- Картка: Набір м’язів -->
+            <!-- Набір м’язів -->
             <article class="bg-brand-surface border border-brand-border/40 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-primary/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover group">
               <div>
                 <div class="relative h-48 w-full overflow-hidden bg-brand-surface-alt">
-                  <img src="assets/images/card_muscle_gain.jpg" alt="Силове тренування зі штангою для набору маси" width="800" height="600" loading="lazy"
+                  <img src="assets/images/card_muscle_gain-800.webp"
+                    srcset="assets/images/card_muscle_gain-400.webp 400w, assets/images/card_muscle_gain-800.webp 800w"
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    alt="Силове тренування зі штангою для набору маси" width="800" height="600" loading="lazy"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-dark/80 backdrop-blur border text-brand-accent border-brand-accent/40">Силовий фокус</span>
                 </div>
@@ -458,18 +422,9 @@
                   <h3 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-brand-primary transition-colors">Набір м’язів</h3>
                   <p class="text-brand-muted text-sm mb-4 leading-relaxed">Прогресивні силові тренування з вільними вагами для розвитку максимальної сили та гіпертрофії м'язових волокон.</p>
                   <ul class="space-y-2 text-xs text-brand-muted border-t border-brand-border/30 pt-4 list-none p-0">
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Спліт-програма з контролем прогресії ваг</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Розрахунок профіциту калорій та білка</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Аналіз техніки базових вправ на відео</span>
-                    </li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Спліт-програма з контролем прогресії ваг</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Розрахунок профіциту калорій та білка</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Аналіз техніки базових вправ на відео</span></li>
                   </ul>
                 </div>
               </div>
@@ -481,11 +436,14 @@
                 </a>
               </div>
             </article>
-            <!-- Картка: Підтримка форми -->
+            <!-- Підтримка форми -->
             <article class="bg-brand-surface border border-brand-border/40 rounded-2xl overflow-hidden flex flex-col justify-between hover:border-brand-primary/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover group sm:col-span-2 lg:col-span-1">
               <div>
                 <div class="relative h-48 w-full overflow-hidden bg-brand-surface-alt">
-                  <img src="assets/images/card_fitness_tone.jpg" alt="Функціональний тренінг та розтяжка" width="800" height="600" loading="lazy"
+                  <img src="assets/images/card_fitness_tone-800.webp"
+                    srcset="assets/images/card_fitness_tone-400.webp 400w, assets/images/card_fitness_tone-800.webp 800w"
+                    sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                    alt="Функціональний тренінг та розтяжка" width="800" height="600" loading="lazy"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold bg-brand-dark/80 backdrop-blur border text-emerald-400 border-emerald-400/40">Баланс і тонус</span>
                 </div>
@@ -493,18 +451,9 @@
                   <h3 class="font-heading font-bold text-xl text-white mb-2 group-hover:text-brand-primary transition-colors">Підтримка форми</h3>
                   <p class="text-brand-muted text-sm mb-4 leading-relaxed">Збалансований рух для активного способу життя, покращення витривалості, мобільності суглобів та енергії на кожен день.</p>
                   <ul class="space-y-2 text-xs text-brand-muted border-t border-brand-border/30 pt-4 list-none p-0">
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>3 комплексних тренування (Mobility + Tone)</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Рекомендації здорового раціону</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                      <i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i>
-                      <span>Практики відновлення та якісного сну</span>
-                    </li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>3 комплексних тренування (Mobility + Tone)</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Рекомендації здорового раціону</span></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-brand-primary" aria-hidden="true"></i><span>Практики відновлення та якісного сну</span></li>
                   </ul>
                 </div>
               </div>
@@ -519,136 +468,137 @@
           </div>
         </div>
       </section>
- <!-- ===== ВІДЖЕТ: ВАРТІСТЬ УЧАСТІ (вставити після секції #programs) ===== -->
-<section id="price-calculator" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="pc-title">
-  <!-- Обов'язкова вступна діагностика -->
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Прозорі ціни</span>
-      <h2 id="pc-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Розрахуй вартість участі</h2>
-      <p class="text-brand-muted mt-3 text-base">Обери програму та додаткові опції — ціна оновлюється одразу.</p>
-    </div>
+      <!-- ВІДЖЕТ: ВАРТІСТЬ УЧАСТІ -->
+      <section id="price-calculator" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="pc-title">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Прозорі ціни</span>
+            <h2 id="pc-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Розрахуй вартість участі</h2>
+            <p class="text-brand-muted mt-3 text-base">Обери програму та додаткові опції — ціна оновлюється одразу.</p>
+          </div>
 
-    <div class="mb-8 p-5 sm:p-6 rounded-2xl bg-brand-primary/10 border border-brand-primary/40" role="note" aria-labelledby="diag-title">
-  <div class="flex items-start gap-4">
-    <div class="shrink-0 w-12 h-12 rounded-xl bg-brand-surface border border-brand-primary/40 flex items-center justify-center text-brand-primary text-xl">
-      <i class="fa-solid fa-stethoscope" aria-hidden="true"></i>
-    </div>
-    <div class="space-y-3">
-      <h3 id="diag-title" class="font-heading font-bold text-lg text-white">
-        Обов’язкова разова діагностика — 1 000 грн
-      </h3>
-      <p class="text-sm text-brand-muted leading-relaxed">
-        Перед стартом кожен учасник проходить вступну діагностику. Вона оплачується <strong class="text-white">один раз</strong> незалежно від тривалості участі, до неї <strong class="text-white">не застосовується знижка</strong>, а її вартість уже включена в орієнтовну суму нижче.
-      </p>
-      <p class="text-sm text-white font-semibold">Навіщо вона потрібна:</p>
-      <ul class="space-y-2 text-sm text-brand-muted list-none p-0 m-0">
-        <li class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
-          <span><strong class="text-white">Безпека.</strong> Тренер з’ясовує стан здоров’я, травми та можливі обмеження, щоб навантаження не нашкодило.</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
-          <span><strong class="text-white">Точна стартова точка.</strong> Заміри ваги, обʼємів і складу тіла, щоб потім бачити реальний прогрес.</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
-          <span><strong class="text-white">Оцінка техніки та мобільності.</strong> Перевірка базових рухів і постави, щоб уникнути помилок у вправах.</span>
-        </li>
-        <li class="flex items-start gap-2">
-          <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
-          <span><strong class="text-white">Індивідуальний план.</strong> На основі результатів тренер підбирає рівень складності, навантаження й харчування саме під вас.</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-    <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
-      <form id="pc-form" novalidate>
-        <fieldset class="space-y-6">
-          <legend class="text-lg font-heading font-bold text-brand-primary pb-3 border-b border-brand-border/30 w-full flex items-center gap-2">
-            <i class="fa-solid fa-coins" aria-hidden="true"></i>
-            <span>Параметри програми</span>
-          </legend>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
-            <div class="space-y-2">
-              <label for="pc-program" class="block text-sm font-semibold text-white">Програма</label>
-              <select id="pc-program" name="pc-program" aria-describedby="pc-program-error" aria-invalid="false"
-                class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors">
-                <option value="loss">Зниження ваги — 4 200 грн/тиж.</option>
-                <option value="muscle">Набір м’язів — 4 800 грн/тиж.</option>
-                <option value="tone">Підтримка форми — 3 600 грн/тиж.</option>
-              </select>
-              <p id="pc-program-error" class="hidden text-sm text-red-400" role="alert"></p>
-            </div>
-
-            <div class="space-y-2">
-              <label for="pc-weeks" class="block text-sm font-semibold text-white">Тривалість, тижнів <span class="text-brand-primary" aria-hidden="true">*</span></label>
-              <input id="pc-weeks" name="pc-weeks" type="number" inputmode="numeric" min="1" max="12" step="1" value="2" required
-                aria-describedby="pc-weeks-hint pc-weeks-error" aria-invalid="false"
-                class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white placeholder-brand-muted/80 focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors" />
-              <p id="pc-weeks-hint" class="text-xs text-brand-muted">Від 1 до 12. Знижка: від 4 тижнів −5%, від 8 тижнів −10%.</p>
-              <p id="pc-weeks-error" class="hidden text-sm text-red-400" role="alert"></p>
-            </div>
-
-            <fieldset class="sm:col-span-2">
-              <legend class="block text-sm font-semibold text-white mb-2">Формат занять</legend>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <input id="pc-format-group" type="radio" name="pc-format" value="group" checked class="peer sr-only" />
-                  <label for="pc-format-group" class="flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 rounded-lg border border-brand-border bg-brand-dark text-sm text-white cursor-pointer transition-colors hover:border-brand-primary peer-checked:border-brand-primary peer-checked:bg-brand-primary/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-focus">
-                    <span>Група</span><span class="text-brand-muted">входить</span>
-                  </label>
-                </div>
-                <div>
-                  <input id="pc-format-personal" type="radio" name="pc-format" value="personal" class="peer sr-only" />
-                  <label for="pc-format-personal" class="flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 rounded-lg border border-brand-border bg-brand-dark text-sm text-white cursor-pointer transition-colors hover:border-brand-primary peer-checked:border-brand-primary peer-checked:bg-brand-primary/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-focus">
-                    <span>Індивідуальний тренер</span><span class="text-brand-muted">+1 800 грн/тиж.</span>
-                  </label>
-                </div>
+          <!-- Обов'язкова вступна діагностика -->
+          <div class="mb-8 p-5 sm:p-6 rounded-2xl bg-brand-primary/10 border border-brand-primary/40" role="note" aria-labelledby="diag-title">
+            <div class="flex flex-col sm:flex-row items-start gap-4">
+              <div class="shrink-0 w-12 h-12 rounded-xl bg-brand-surface border border-brand-primary/40 flex items-center justify-center text-brand-primary text-xl">
+                <i class="fa-solid fa-stethoscope" aria-hidden="true"></i>
               </div>
-            </fieldset>
-
-            <div class="flex items-center gap-3 min-h-[44px]">
-              <input id="pc-menu" name="pc-menu" type="checkbox" class="h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
-              <label for="pc-menu" class="text-sm text-white">Індивідуальне меню <span class="text-brand-muted">+900 грн/тиж.</span></label>
-            </div>
-            <div class="flex items-center gap-3 min-h-[44px]">
-              <input id="pc-lodging" name="pc-lodging" type="checkbox" class="h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
-              <label for="pc-lodging" class="text-sm text-white">Проживання на базі <span class="text-brand-muted">+2 500 грн/тиж.</span></label>
+              <div class="space-y-3">
+                <h3 id="diag-title" class="font-heading font-bold text-lg text-white">
+                  Обов’язкова разова діагностика — 1 000 грн
+                </h3>
+                <p class="text-sm text-brand-muted leading-relaxed">
+                  Перед стартом кожен учасник проходить вступну діагностику. Вона оплачується <strong class="text-white">один раз</strong> незалежно від тривалості участі, до неї <strong class="text-white">не застосовується знижка</strong>, а її вартість уже включена в орієнтовну суму нижче.
+                </p>
+                <p class="text-sm text-white font-semibold">Навіщо вона потрібна:</p>
+                <ul class="space-y-2 text-sm text-brand-muted list-none p-0 m-0">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+                    <span><strong class="text-white">Безпека.</strong> Тренер з’ясовує стан здоров’я, травми та можливі обмеження, щоб навантаження не нашкодило.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+                    <span><strong class="text-white">Точна стартова точка.</strong> Заміри ваги, обʼємів і складу тіла, щоб потім бачити реальний прогрес.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+                    <span><strong class="text-white">Оцінка техніки та мобільності.</strong> Перевірка базових рухів і постави, щоб уникнути помилок у вправах.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-circle-check text-brand-primary mt-1" aria-hidden="true"></i>
+                    <span><strong class="text-white">Індивідуальний план.</strong> На основі результатів тренер підбирає рівень складності, навантаження й харчування саме під вас.</span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </fieldset>
-      </form>
 
-      <div class="mt-8 p-5 sm:p-6 rounded-xl bg-brand-surface-alt border-l-4 border-brand-primary" aria-live="polite">
-        <h3 class="font-heading font-bold text-lg text-white mb-1 flex items-center gap-2">
-          <i class="fa-solid fa-receipt text-brand-primary" aria-hidden="true"></i>
-          <span>Орієнтовна вартість</span>
-        </h3>
-        <p id="pc-summary" class="text-xs text-brand-muted">—</p>
-        <p id="pc-total" class="font-heading font-bold text-3xl sm:text-4xl text-brand-primary mt-2 break-words">—</p>
+          <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
+            <form id="pc-form" novalidate>
+              <fieldset class="space-y-6">
+                <legend class="text-lg font-heading font-bold text-brand-primary pb-3 border-b border-brand-border/30 w-full flex items-center gap-2">
+                  <i class="fa-solid fa-coins" aria-hidden="true"></i>
+                  <span>Параметри програми</span>
+                </legend>
 
-        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-sm">
-          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Програма</dt><dd id="pc-base" class="text-white font-semibold">—</dd></div>
-          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Додаткові опції</dt><dd id="pc-extras" class="text-white font-semibold">—</dd></div>
-          <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Знижка за тривалість</dt><dd id="pc-discount" class="text-white font-semibold">—</dd></div>
-<div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30">
-  <dt class="text-xs text-brand-muted">Вступна діагностика (обов’язкова, разово, без знижки)</dt>
-  <dd id="pc-fee" class="text-white font-semibold">1 000 грн</dd>
-</div>
-</dl>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 pt-2">
+                  <div class="space-y-2">
+                    <label for="pc-program" class="block text-sm font-semibold text-white">Програма</label>
+                    <select id="pc-program" name="pc-program" aria-describedby="pc-program-error" aria-invalid="false"
+                      class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors">
+                      <option value="loss">Зниження ваги — 4 200 грн/тиж.</option>
+                      <option value="muscle">Набір м’язів — 4 800 грн/тиж.</option>
+                      <option value="tone">Підтримка форми — 3 600 грн/тиж.</option>
+                    </select>
+                    <p id="pc-program-error" class="hidden text-sm text-red-400" role="alert"></p>
+                  </div>
 
-      <div class="pt-6 flex justify-center sm:justify-end">
-        <a href="#feedback" class="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">Забронювати місце</a>
-      </div>
-    </div>
-  </div>
-  </div>
-</section>
+                  <div class="space-y-2">
+                    <label for="pc-weeks" class="block text-sm font-semibold text-white">Тривалість, тижнів <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                    <input id="pc-weeks" name="pc-weeks" type="number" inputmode="numeric" min="1" max="12" step="1" value="2" required
+                      aria-describedby="pc-weeks-hint pc-weeks-error" aria-invalid="false"
+                      class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white placeholder-brand-muted/80 focus:border-brand-primary focus:ring-2 focus:ring-brand-focus focus:outline-none transition-colors" />
+                    <p id="pc-weeks-hint" class="text-xs text-brand-muted">Від 1 до 12. Знижка: від 4 тижнів −5%, від 8 тижнів −10%.</p>
+                    <p id="pc-weeks-error" class="hidden text-sm text-red-400" role="alert"></p>
+                  </div>
+
+                  <fieldset class="sm:col-span-2">
+                    <legend class="block text-sm font-semibold text-white mb-2">Формат занять</legend>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <input id="pc-format-group" type="radio" name="pc-format" value="group" checked class="peer sr-only" />
+                        <label for="pc-format-group" class="flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 rounded-lg border border-brand-border bg-brand-dark text-sm text-white cursor-pointer transition-colors hover:border-brand-primary peer-checked:border-brand-primary peer-checked:bg-brand-primary/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-focus">
+                          <span>Група</span><span class="text-brand-muted">входить</span>
+                        </label>
+                      </div>
+                      <div>
+                        <input id="pc-format-personal" type="radio" name="pc-format" value="personal" class="peer sr-only" />
+                        <label for="pc-format-personal" class="flex min-h-[44px] items-center justify-between gap-3 px-4 py-3 rounded-lg border border-brand-border bg-brand-dark text-sm text-white cursor-pointer transition-colors hover:border-brand-primary peer-checked:border-brand-primary peer-checked:bg-brand-primary/10 peer-focus-visible:ring-2 peer-focus-visible:ring-brand-focus">
+                          <span>Індивідуальний тренер</span><span class="text-brand-muted">+1 800 грн/тиж.</span>
+                        </label>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <div class="flex items-center gap-3 min-h-[44px]">
+                    <input id="pc-menu" name="pc-menu" type="checkbox" class="h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
+                    <label for="pc-menu" class="text-sm text-white">Індивідуальне меню <span class="text-brand-muted">+900 грн/тиж.</span></label>
+                  </div>
+                  <div class="flex items-center gap-3 min-h-[44px]">
+                    <input id="pc-lodging" name="pc-lodging" type="checkbox" class="h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
+                    <label for="pc-lodging" class="text-sm text-white">Проживання на базі <span class="text-brand-muted">+2 500 грн/тиж.</span></label>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+
+            <div class="mt-8 p-5 sm:p-6 rounded-xl bg-brand-surface-alt border-l-4 border-brand-primary" aria-live="polite">
+              <h3 class="font-heading font-bold text-lg text-white mb-1 flex items-center gap-2">
+                <i class="fa-solid fa-receipt text-brand-primary" aria-hidden="true"></i>
+                <span>Орієнтовна вартість</span>
+              </h3>
+              <p id="pc-summary" class="text-xs text-brand-muted">—</p>
+              <p id="pc-total" class="font-heading font-bold text-3xl sm:text-4xl text-brand-primary mt-2 break-words">—</p>
+
+              <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-sm">
+                <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Програма</dt><dd id="pc-base" class="text-white font-semibold">—</dd></div>
+                <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Додаткові опції</dt><dd id="pc-extras" class="text-white font-semibold">—</dd></div>
+                <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30"><dt class="text-xs text-brand-muted">Знижка за тривалість</dt><dd id="pc-discount" class="text-white font-semibold">—</dd></div>
+                <div class="p-3 rounded-lg bg-brand-dark/50 border border-brand-border/30">
+                  <dt class="text-xs text-brand-muted">Вступна діагностика (обов’язкова, разово, без знижки)</dt>
+                  <dd id="pc-fee" class="text-white font-semibold">1 000 грн</dd>
+                </div>
+              </dl>
+
+              <div class="pt-6 flex justify-center sm:justify-end">
+                <a href="#feedback" class="w-full sm:w-auto min-h-[44px] inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">Забронювати місце</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- 5. ВІДГУКИ -->
       <section id="reviews" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="reviews-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -658,109 +608,109 @@
             <p class="text-brand-muted mt-3 text-base">Реальні історії людей, які налагодили звички та змінили якість свого життя.</p>
           </div>
           <div class="relative md:px-14 max-w-6xl mx-auto">
-  <div class="swiper reviews-swiper pb-12">
-    <div class="swiper-wrapper">
+            <div class="swiper reviews-swiper pb-12">
+              <div class="swiper-wrapper">
 
-      <div class="swiper-slide !h-auto">
-        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
-          <div>
-            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                <div class="swiper-slide !h-auto">
+                  <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+                    <div>
+                      <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                      </div>
+                      <blockquote class="m-0 text-white leading-relaxed italic">«Знайшла комфортний ритм і стала регулярніше тренуватися без докорів сумління. За 2 місяці мінус 6 кг і море енергії!»</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                      <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ОК</div>
+                      <div><div class="font-bold text-sm text-white">Олена Ковальчук</div><div class="text-xs text-brand-muted">Програма «Зниження ваги»</div></div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="swiper-slide !h-auto">
+                  <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+                    <div>
+                      <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                      </div>
+                      <blockquote class="m-0 text-white leading-relaxed italic">«Зрозумілий план тренувань та чіткі цифри BMR допомогли мені нарешті впевнено почати та наростити 4 кг чистих м'язів.»</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                      <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">АШ</div>
+                      <div><div class="font-bold text-sm text-white">Андрій Шевченко</div><div class="text-xs text-brand-muted">Програма «Набір м’язів»</div></div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="swiper-slide !h-auto">
+                  <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+                    <div>
+                      <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                      </div>
+                      <blockquote class="m-0 text-white leading-relaxed italic">«Калькулятор ІМТ підказав, з чого почати, а тренери скоригували навантаження під мою спину. Жодного дискомфорту!»</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                      <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ІМ</div>
+                      <div><div class="font-bold text-sm text-white">Ірина Мельник</div><div class="text-xs text-brand-muted">Програма «Підтримка форми»</div></div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="swiper-slide !h-auto">
+                  <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+                    <div>
+                      <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                      </div>
+                      <blockquote class="m-0 text-white leading-relaxed italic">«Тиждень у Карпатах замінив мені пів року безсистемних занять. Щотижневі заміри дуже мотивують.»</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                      <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ДБ</div>
+                      <div><div class="font-bold text-sm text-white">Дмитро Бондаренко</div><div class="text-xs text-brand-muted">Програма «Зниження ваги»</div></div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="swiper-slide !h-auto">
+                  <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+                    <div>
+                      <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                      </div>
+                      <blockquote class="m-0 text-white leading-relaxed italic">«Нарешті розібралась з білком і калоріями. Відео з технікою вправ врятували мене від травм.»</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                      <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">СП</div>
+                      <div><div class="font-bold text-sm text-white">Софія Петренко</div><div class="text-xs text-brand-muted">Програма «Набір м’язів»</div></div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+                <div class="swiper-slide !h-auto">
+                  <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
+                    <div>
+                      <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+                      </div>
+                      <blockquote class="m-0 text-white leading-relaxed italic">«Прийшов новачком після 10 років сидячої роботи. За місяць повернулась витривалість, а разом з нею й настрій.»</blockquote>
+                    </div>
+                    <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
+                      <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">МЛ</div>
+                      <div><div class="font-bold text-sm text-white">Максим Лисенко</div><div class="text-xs text-brand-muted">Програма «Підтримка форми»</div></div>
+                    </figcaption>
+                  </figure>
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
             </div>
-            <blockquote class="m-0 text-white leading-relaxed italic">«Знайшла комфортний ритм і стала регулярніше тренуватися без докорів сумління. За 2 місяці мінус 6 кг і море енергії!»</blockquote>
+
+            <button type="button" class="reviews-prev swiper-button-prev" aria-label="Попередній відгук"></button>
+            <button type="button" class="reviews-next swiper-button-next" aria-label="Наступний відгук"></button>
           </div>
-          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-            <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ОК</div>
-            <div><div class="font-bold text-sm text-white">Олена Ковальчук</div><div class="text-xs text-brand-muted">Програма «Зниження ваги»</div></div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="swiper-slide !h-auto">
-        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
-          <div>
-            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-            </div>
-            <blockquote class="m-0 text-white leading-relaxed italic">«Зрозумілий план тренувань та чіткі цифри BMR допомогли мені нарешті впевнено почати та наростити 4 кг чистих м'язів.»</blockquote>
-          </div>
-          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-            <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">АШ</div>
-            <div><div class="font-bold text-sm text-white">Андрій Шевченко</div><div class="text-xs text-brand-muted">Програма «Набір м’язів»</div></div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="swiper-slide !h-auto">
-        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
-          <div>
-            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-            </div>
-            <blockquote class="m-0 text-white leading-relaxed italic">«Калькулятор ІМТ підказав, з чого почати, а тренери скоригували навантаження під мою спину. Жодного дискомфорту!»</blockquote>
-          </div>
-          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-            <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ІМ</div>
-            <div><div class="font-bold text-sm text-white">Ірина Мельник</div><div class="text-xs text-brand-muted">Програма «Підтримка форми»</div></div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="swiper-slide !h-auto">
-        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
-          <div>
-            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-            </div>
-            <blockquote class="m-0 text-white leading-relaxed italic">«Тиждень у Карпатах замінив мені пів року безсистемних занять. Щотижневі заміри дуже мотивують.»</blockquote>
-          </div>
-          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-            <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">ДБ</div>
-            <div><div class="font-bold text-sm text-white">Дмитро Бондаренко</div><div class="text-xs text-brand-muted">Програма «Зниження ваги»</div></div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="swiper-slide !h-auto">
-        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
-          <div>
-            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-            </div>
-            <blockquote class="m-0 text-white leading-relaxed italic">«Нарешті розібралась з білком і калоріями. Відео з технікою вправ врятували мене від травм.»</blockquote>
-          </div>
-          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-            <div class="w-10 h-10 rounded-full bg-brand-primary text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">СП</div>
-            <div><div class="font-bold text-sm text-white">Софія Петренко</div><div class="text-xs text-brand-muted">Програма «Набір м’язів»</div></div>
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="swiper-slide !h-auto">
-        <figure class="m-0 h-full flex flex-col justify-between gap-6 bg-brand-surface-alt border border-brand-border/40 rounded-2xl p-6 hover:border-brand-primary/50 transition-colors">
-          <div>
-            <div class="flex gap-1 text-brand-primary text-sm mb-4" role="img" aria-label="Оцінка 5 з 5 зірок">
-              <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
-            </div>
-            <blockquote class="m-0 text-white leading-relaxed italic">«Прийшов новачком після 10 років сидячої роботи. За місяць повернулась витривалість, а разом з нею й настрій.»</blockquote>
-          </div>
-          <figcaption class="flex items-center gap-3 pt-4 border-t border-brand-border/20">
-            <div class="w-10 h-10 rounded-full bg-brand-accent text-brand-dark font-bold flex items-center justify-center font-heading" aria-hidden="true">МЛ</div>
-            <div><div class="font-bold text-sm text-white">Максим Лисенко</div><div class="text-xs text-brand-muted">Програма «Підтримка форми»</div></div>
-          </figcaption>
-        </figure>
-      </div>
-
-    </div>
-    <div class="swiper-pagination"></div>
-  </div>
-
-  <button type="button" class="reviews-prev swiper-button-prev" aria-label="Попередній відгук"></button>
-  <button type="button" class="reviews-next swiper-button-next" aria-label="Наступний відгук"></button>
-</div>
         </div>
       </section>
- 
+
       <!-- 6. FAQ -->
       <section id="faq" class="py-16 sm:py-20 bg-brand-surface border-y border-brand-border/30 scroll-mt-20" aria-labelledby="faq-title">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -794,75 +744,73 @@
           </div>
         </div>
       </section>
- 
+
       <!-- ФОРМА ЗВОРОТНОГО ЗВ'ЯЗКУ -->
-<section id="feedback" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="feedback-title">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center max-w-2xl mx-auto mb-10">
-      <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Зв’язок з нами</span>
-      <h2 id="feedback-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Залиш повідомлення</h2>
-      <p class="text-brand-muted mt-3 text-base">Напиши нам, і тренер зв’яжеться з тобою найближчим часом.</p>
-    </div>
-
-    <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
-      <form id="feedbackForm" novalidate>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-
-          <div class="space-y-2">
-            <label for="username" class="block text-sm font-semibold text-white">Ім’я <span class="text-brand-primary" aria-hidden="true">*</span></label>
-            <input id="username" name="username" type="text" autocomplete="name" required
-              aria-describedby="usernameError" aria-invalid="false"
-              class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors" />
-            <p id="usernameError" class="hidden text-sm text-red-400"></p>
+      <section id="feedback" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="feedback-title">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-brand-primary mb-2">Зв’язок з нами</span>
+            <h2 id="feedback-title" class="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-white">Залиш повідомлення</h2>
+            <p class="text-brand-muted mt-3 text-base">Напиши нам, і тренер зв’яжеться з тобою найближчим часом.</p>
           </div>
 
-          <div class="space-y-2">
-            <label for="email" class="block text-sm font-semibold text-white">Емейл <span class="text-brand-primary" aria-hidden="true">*</span></label>
-            <input id="email" name="email" type="email" autocomplete="email" required
-              aria-describedby="emailError" aria-invalid="false"
-              class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors" />
-            <p id="emailError" class="hidden text-sm text-red-400"></p>
-          </div>
+          <div class="bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-card">
+            <form id="feedbackForm" novalidate>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
 
-          <div class="space-y-2 md:col-span-2">
-            <label for="phone" class="block text-sm font-semibold text-white">Телефон <span class="text-brand-primary" aria-hidden="true">*</span></label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required
-              aria-describedby="phoneHint phoneError" aria-invalid="false"
-              class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors" />
-            <p id="phoneHint" class="text-xs text-brand-muted">Формат: +380XXXXXXXXX (без пробілів)</p>
-            <p id="phoneError" class="hidden text-sm text-red-400"></p>
-          </div>
+                <div class="space-y-2">
+                  <label for="username" class="block text-sm font-semibold text-white">Ім’я <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                  <input id="username" name="username" type="text" autocomplete="name" required
+                    aria-describedby="usernameError" aria-invalid="false"
+                    class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors" />
+                  <p id="usernameError" class="hidden text-sm text-red-400"></p>
+                </div>
 
-          <div class="space-y-2 md:col-span-2">
-            <label for="message" class="block text-sm font-semibold text-white">Повідомлення <span class="text-brand-primary" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" rows="5" required
-              aria-describedby="messageError" aria-invalid="false"
-              class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors"></textarea>
-            <p id="messageError" class="hidden text-sm text-red-400"></p>
-          </div>
+                <div class="space-y-2">
+                  <label for="email" class="block text-sm font-semibold text-white">Емейл <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                  <input id="email" name="email" type="email" autocomplete="email" required
+                    aria-describedby="emailError" aria-invalid="false"
+                    class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors" />
+                  <p id="emailError" class="hidden text-sm text-red-400"></p>
+                </div>
 
-          <div class="md:col-span-2">
-            <div class="flex items-start gap-3">
-              <input id="agreement" name="agreement" type="checkbox" required
-                aria-describedby="agreementError" aria-invalid="false"
-                class="mt-1 h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
-              <label for="agreement" class="text-sm text-brand-muted">Погоджуюсь з політикою конфіденційності <span class="text-brand-primary" aria-hidden="true">*</span></label>
-            </div>
-            <p id="agreementError" class="hidden text-sm text-red-400 mt-2"></p>
+                <div class="space-y-2 md:col-span-2">
+                  <label for="phone" class="block text-sm font-semibold text-white">Телефон <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required
+                    aria-describedby="phoneHint phoneError" aria-invalid="false"
+                    class="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors" />
+                  <p id="phoneHint" class="text-xs text-brand-muted">Формат: +380XXXXXXXXX (без пробілів)</p>
+                  <p id="phoneError" class="hidden text-sm text-red-400"></p>
+                </div>
+
+                <div class="space-y-2 md:col-span-2">
+                  <label for="message" class="block text-sm font-semibold text-white">Повідомлення <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                  <textarea id="message" name="message" rows="5" required
+                    aria-describedby="messageError" aria-invalid="false"
+                    class="w-full px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus transition-colors"></textarea>
+                  <p id="messageError" class="hidden text-sm text-red-400"></p>
+                </div>
+
+                <div class="md:col-span-2">
+                  <div class="flex items-start gap-3">
+                    <input id="agreement" name="agreement" type="checkbox" required
+                      aria-describedby="agreementError" aria-invalid="false"
+                      class="mt-1 h-5 w-5 shrink-0 rounded border-brand-border bg-brand-dark accent-[#D4A72C] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus" />
+                    <label for="agreement" class="text-sm text-brand-muted">Погоджуюсь з політикою конфіденційності <span class="text-brand-primary" aria-hidden="true">*</span></label>
+                  </div>
+                  <p id="agreementError" class="hidden text-sm text-red-400 mt-2"></p>
+                </div>
+              </div>
+
+              <div class="pt-6 flex justify-center md:justify-end">
+                <button type="submit" class="w-full md:w-auto min-h-[48px] px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Надіслати</button>
+              </div>
+            </form>
           </div>
         </div>
+      </section>
 
-        <div class="pt-6 flex justify-center md:justify-end">
-          <button type="submit" class="w-full md:w-auto min-h-[48px] px-8 py-3 rounded-lg bg-brand-primary hover:bg-brand-primary-hover active:bg-brand-primary-pressed text-brand-dark font-bold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark">Надіслати</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-      <!-- ============================================================= -->
-      <!-- МЕДІА-ІНТЕГРАЦІЯ 2: Google Maps (контакти + карта)               -->
-      <!-- Щоб змінити місце: Google Maps → Поділитися → Вбудовування карти -->
-      <!-- ============================================================= -->
+      <!-- КОНТАКТИ + КАРТА -->
       <section id="contacts" class="py-16 sm:py-20 bg-brand-dark scroll-mt-20" aria-labelledby="contacts-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-2xl mx-auto mb-10">
@@ -884,7 +832,7 @@
           </div>
         </div>
       </section>
- 
+
       <!-- 7. ФІНАЛЬНИЙ CTA -->
       <section class="py-12 sm:py-16" aria-labelledby="final-cta-title">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -902,7 +850,7 @@
         </div>
       </section>
     </main>
- 
+
     <!-- ===== FOOTER ===== -->
     <footer class="bg-brand-surface border-t border-brand-border/40 pt-16 pb-12 mt-auto">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -962,19 +910,20 @@
         </div>
       </div>
     </footer>
- <div id="successModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
-  <div class="w-full max-w-md bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 shadow-2xl text-center">
-    <div class="mx-auto mb-4 w-14 h-14 rounded-full bg-brand-success/15 text-brand-success flex items-center justify-center text-2xl">
-      <i class="fa-solid fa-check" aria-hidden="true"></i>
-    </div>
-    <h2 id="modalTitle" class="font-heading font-bold text-xl text-white mb-2">Дякуємо!</h2>
-    <p id="modalText" class="text-sm text-brand-muted mb-6">Форма успішно пройшла клієнтську валідацію. Демонстрація успішного надсилання.</p>
-    <button id="modalClose" type="button" class="min-h-[44px] px-8 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover text-brand-dark font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">Закрити</button>
-  </div>
-</div>
 
-<script src="assets/js/validation.js" defer></script>
-<script src="assets/js/widget.js" defer></script>
+    <!-- Модальне вікно успіху -->
+    <div id="successModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalText">
+      <div class="w-full max-w-md bg-brand-surface border border-brand-border/60 rounded-2xl p-6 sm:p-8 shadow-2xl text-center">
+        <div class="mx-auto mb-4 w-14 h-14 rounded-full bg-brand-success/15 text-brand-success flex items-center justify-center text-2xl">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+        </div>
+        <h2 id="modalTitle" class="font-heading font-bold text-xl text-white mb-2">Дякуємо!</h2>
+        <p id="modalText" class="text-sm text-brand-muted mb-6">Форма успішно пройшла клієнтську валідацію. Демонстрація успішного надсилання.</p>
+        <button id="modalClose" type="button" class="min-h-[44px] px-8 py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary-hover text-brand-dark font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-focus focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface">Закрити</button>
+      </div>
+    </div>
+
+    <!-- Мобільне меню + калькулятор ІМТ/BMR -->
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         // 1. Мобільне меню (гамбургер)
@@ -982,7 +931,7 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const burgerIcon = document.getElementById('burger-icon');
         const closeIcon = document.getElementById('close-icon');
- 
+
         function setMenu(open) {
           mobileMenu.classList.toggle('hidden', !open);
           burgerIcon.classList.toggle('hidden', open);
@@ -990,7 +939,7 @@
           mobileBtn.setAttribute('aria-expanded', String(open));
           mobileBtn.setAttribute('aria-label', open ? 'Закрити головне меню' : 'Відкрити головне меню');
         }
- 
+
         if (mobileBtn && mobileMenu) {
           mobileBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
           document.querySelectorAll('.mobile-nav-link').forEach((link) =>
@@ -1003,29 +952,28 @@
             }
           });
         }
- 
+
         // 2. Калькулятор ІМТ та BMR (формула Міффліна-Сан Жеора)
         const form = document.getElementById('bmi-form');
         if (!form) return;
         const $ = (id) => document.getElementById(id);
         const errorBox = $('form-error');
- 
+
         function showError(msg) {
           errorBox.textContent = msg;
           errorBox.classList.remove('hidden');
         }
- 
+
         form.addEventListener('submit', (e) => {
           e.preventDefault();
           errorBox.classList.add('hidden');
- 
+
           const sex = $('sex').value;
           const weight = parseFloat($('weight').value);
           const height = parseFloat($('height').value);
           const age = parseInt($('age').value, 10);
           const activity = parseFloat($('activity').value);
- 
-          // Валідація: порожні значення та вихід за межі min/max
+
           for (const [id, label, value] of [['weight', 'вага', weight], ['height', 'зріст', height], ['age', 'вік', age]]) {
             const input = $(id);
             if (Number.isNaN(value)) {
@@ -1039,38 +987,37 @@
               return;
             }
           }
- 
+
           const bmi = weight / Math.pow(height / 100, 2);
-          // BMR = 10*вага + 6.25*зріст - 5*вік + s  (s = +5 для чоловіків, -161 для жінок)
           const baseBmr = 10 * weight + 6.25 * height - 5 * age + (sex === 'male' ? 5 : -161);
           const totalDailyCalories = Math.round(baseBmr * activity);
- 
-        let category, rec, colorClass, programKey;
-if (bmi < 18.5) {
-  category = 'Недостатня вага'; colorClass = 'text-amber-400'; programKey = 'muscle';
-  rec = '«Набір м’язів» — профіцит калорій та силові заняття для набору маси.';
-} else if (bmi < 25) {
-  category = 'Нормальна вага'; colorClass = 'text-emerald-400'; programKey = 'tone';
-  rec = '«Підтримка форми» або «Набір м’язів» для розвитку функціональності та тонусу.';
-} else if (bmi < 30) {
-  category = 'Надлишкова вага'; colorClass = 'text-brand-primary'; programKey = 'loss';
-  rec = '«Зниження ваги» — помірний дефіцит калорій та кардіо-функціональний комплекс.';
-} else {
-  category = 'Ожиріння'; colorClass = 'text-red-400'; programKey = 'loss';
-  rec = '«Зниження ваги» під пильним наглядом наставника та нутриціолога.';
-}
- 
+
+          let category, rec, colorClass, programKey;
+          if (bmi < 18.5) {
+            category = 'Недостатня вага'; colorClass = 'text-amber-400'; programKey = 'muscle';
+            rec = '«Набір м’язів» — профіцит калорій та силові заняття для набору маси.';
+          } else if (bmi < 25) {
+            category = 'Нормальна вага'; colorClass = 'text-emerald-400'; programKey = 'tone';
+            rec = '«Підтримка форми» або «Набір м’язів» для розвитку функціональності та тонусу.';
+          } else if (bmi < 30) {
+            category = 'Надлишкова вага'; colorClass = 'text-brand-primary'; programKey = 'loss';
+            rec = '«Зниження ваги» — помірний дефіцит калорій та кардіо-функціональний комплекс.';
+          } else {
+            category = 'Ожиріння'; colorClass = 'text-red-400'; programKey = 'loss';
+            rec = '«Зниження ваги» під пильним наглядом наставника та нутриціолога.';
+          }
+
           $('result-title').textContent = 'Твій персональний результат:';
           $('go-to-price').dataset.program = programKey;
           $('bmi-value').textContent = bmi.toFixed(1);
- 
+
           const status = $('bmi-status');
           status.textContent = '';
           const cat = document.createElement('span');
           cat.className = colorClass + ' font-semibold';
           cat.textContent = category;
           status.append(cat, ' (норма 18.5 – 24.9)');
- 
+
           $('bmr-value').textContent = Math.round(baseBmr) + ' ккал';
           $('bmr-status').textContent = 'Добова норма з урахуванням активності: ~' + totalDailyCalories + ' ккал';
           $('recommendation-text').textContent = rec;
@@ -1078,39 +1025,52 @@ if (bmi < 18.5) {
           $('result-title').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
       });
-
     </script>
- 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const reviewsSwiper = new Swiper('.reviews-swiper', {
-      loop: true,
-      spaceBetween: 24,
-      grabCursor: true,
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
-      pagination: { el: '.reviews-swiper .swiper-pagination', clickable: true },
-      navigation: { nextEl: '.reviews-next', prevEl: '.reviews-prev' },
-      breakpoints: {
-        320:  { slidesPerView: 1 },
-        768:  { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      },
-    });
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    Fancybox.bind('[data-fancybox="camp-gallery"]', {
-      Carousel: { transition: 'fade' },        // ефект переходу між фото
-      Images: { Panzoom: { maxScale: 3 } },    // збільшення до 3x
-      Hash: false,                             // не змінювати URL при відкритті
-    });
-  });
-</script>
+
+    <!-- Typed.js, Swiper, Fancybox -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Typed.js (поважаємо «зменшити анімацію»)
+        const target = document.getElementById('typed-text');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (target && !reduceMotion && window.Typed) {
+          new Typed('#typed-text', {
+            strings: ['у власному темпі', 'без зривів і стресу', 'з науковим підходом', 'разом із тренером'],
+            typeSpeed: 55,
+            backSpeed: 30,
+            backDelay: 1600,
+            startDelay: 600,
+            loop: true,
+            smartBackspace: true,
+          });
+        }
+
+        // Swiper
+        if (window.Swiper) {
+          new Swiper('.reviews-swiper', {
+            loop: true,
+            spaceBetween: 24,
+            grabCursor: true,
+            autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
+            pagination: { el: '.reviews-swiper .swiper-pagination', clickable: true },
+            navigation: { nextEl: '.reviews-next', prevEl: '.reviews-prev' },
+            breakpoints: {
+              320: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            },
+          });
+        }
+
+        // Fancybox
+        if (window.Fancybox) {
+          Fancybox.bind('[data-fancybox="camp-gallery"]', {
+            Carousel: { transition: 'fade' },
+            Images: { Panzoom: { maxScale: 3 } },
+            Hash: false,
+          });
+        }
+      });
+    </script>
   </body>
 </html>
- 

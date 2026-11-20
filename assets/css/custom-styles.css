@@ -124,11 +124,7 @@ details[open] {
 @media (max-width: 767px) {
   .reviews-prev, .reviews-next { display: none; }
 }
-@font-face {
-  font-family: "Font Awesome 6 Free"; font-style: normal; font-weight: 900; font-display: swap;
-  src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-solid-900.woff2) format("woff2");
-}
-@font-face {
-  font-family: "Font Awesome 6 Brands"; font-style: normal; font-weight: 400; font-display: swap;
-  src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/webfonts/fa-brands-400.woff2) format("woff2");
-}
+/* Резервуємо ширину слайдів до ініціалізації Swiper (проти CLS) */
+.reviews-swiper .swiper-slide { width: 100%; margin-right: 24px; }
+@media (min-width: 768px)  { .reviews-swiper .swiper-slide { width: calc((100% - 24px) / 2); } }
+@media (min-width: 1024px) { .reviews-swiper .swiper-slide { width: calc((100% - 48px) / 3); } }
